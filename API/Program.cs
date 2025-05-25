@@ -90,7 +90,7 @@ builder.Services.AddCors(options =>
 options.AddPolicy("MyAllowedOrigins",
     policy =>
     {
-        policy.WithOrigins("http://localhost:8080")
+        policy.WithOrigins("https://zealous-smoke-0cb68de03.6.azurestaticapps.net")
             .AllowAnyHeader()
             .AllowAnyMethod();
     });
