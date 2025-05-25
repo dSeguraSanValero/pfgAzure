@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Lenovo\\OneDrive\\Escritorio\\ciclo DAW\\Tercer ciclo\\PFG\\Business\\FisioScan.Business.csproj": {}
+    "C:\\Users\\Lenovo\\OneDrive\\Escritorio\\pgfAzure\\Business\\FisioScan.Business.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Lenovo\\OneDrive\\Escritorio\\ciclo DAW\\Tercer ciclo\\PFG\\Business\\FisioScan.Business.csproj": {
+    "C:\\Users\\Lenovo\\OneDrive\\Escritorio\\pgfAzure\\Business\\FisioScan.Business.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Lenovo\\OneDrive\\Escritorio\\ciclo DAW\\Tercer ciclo\\PFG\\Business\\FisioScan.Business.csproj",
+        "projectUniqueName": "C:\\Users\\Lenovo\\OneDrive\\Escritorio\\pgfAzure\\Business\\FisioScan.Business.csproj",
         "projectName": "FisioScan.Business",
-        "projectPath": "C:\\Users\\Lenovo\\OneDrive\\Escritorio\\ciclo DAW\\Tercer ciclo\\PFG\\Business\\FisioScan.Business.csproj",
+        "projectPath": "C:\\Users\\Lenovo\\OneDrive\\Escritorio\\pgfAzure\\Business\\FisioScan.Business.csproj",
         "packagesPath": "C:\\Users\\Lenovo\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Lenovo\\OneDrive\\Escritorio\\ciclo DAW\\Tercer ciclo\\PFG\\Business\\obj\\",
+        "outputPath": "C:\\Users\\Lenovo\\OneDrive\\Escritorio\\pgfAzure\\Business\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Lenovo\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -26,11 +26,11 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Users\\Lenovo\\OneDrive\\Escritorio\\ciclo DAW\\Tercer ciclo\\PFG\\Data\\FisioScan.Data.csproj": {
-                "projectPath": "C:\\Users\\Lenovo\\OneDrive\\Escritorio\\ciclo DAW\\Tercer ciclo\\PFG\\Data\\FisioScan.Data.csproj"
+              "C:\\Users\\Lenovo\\OneDrive\\Escritorio\\pgfAzure\\Data\\FisioScan.Data.csproj": {
+                "projectPath": "C:\\Users\\Lenovo\\OneDrive\\Escritorio\\pgfAzure\\Data\\FisioScan.Data.csproj"
               },
-              "C:\\Users\\Lenovo\\OneDrive\\Escritorio\\ciclo DAW\\Tercer ciclo\\PFG\\Models\\FisioScan.Models.csproj": {
-                "projectPath": "C:\\Users\\Lenovo\\OneDrive\\Escritorio\\ciclo DAW\\Tercer ciclo\\PFG\\Models\\FisioScan.Models.csproj"
+              "C:\\Users\\Lenovo\\OneDrive\\Escritorio\\pgfAzure\\Models\\FisioScan.Models.csproj": {
+                "projectPath": "C:\\Users\\Lenovo\\OneDrive\\Escritorio\\pgfAzure\\Models\\FisioScan.Models.csproj"
               }
             }
           }
@@ -63,14 +63,14 @@
         }
       }
     },
-    "C:\\Users\\Lenovo\\OneDrive\\Escritorio\\ciclo DAW\\Tercer ciclo\\PFG\\Data\\FisioScan.Data.csproj": {
+    "C:\\Users\\Lenovo\\OneDrive\\Escritorio\\pgfAzure\\Data\\FisioScan.Data.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Lenovo\\OneDrive\\Escritorio\\ciclo DAW\\Tercer ciclo\\PFG\\Data\\FisioScan.Data.csproj",
+        "projectUniqueName": "C:\\Users\\Lenovo\\OneDrive\\Escritorio\\pgfAzure\\Data\\FisioScan.Data.csproj",
         "projectName": "FisioScan.Data",
-        "projectPath": "C:\\Users\\Lenovo\\OneDrive\\Escritorio\\ciclo DAW\\Tercer ciclo\\PFG\\Data\\FisioScan.Data.csproj",
+        "projectPath": "C:\\Users\\Lenovo\\OneDrive\\Escritorio\\pgfAzure\\Data\\FisioScan.Data.csproj",
         "packagesPath": "C:\\Users\\Lenovo\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Lenovo\\OneDrive\\Escritorio\\ciclo DAW\\Tercer ciclo\\PFG\\Data\\obj\\",
+        "outputPath": "C:\\Users\\Lenovo\\OneDrive\\Escritorio\\pgfAzure\\Data\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Lenovo\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -85,8 +85,8 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Users\\Lenovo\\OneDrive\\Escritorio\\ciclo DAW\\Tercer ciclo\\PFG\\Models\\FisioScan.Models.csproj": {
-                "projectPath": "C:\\Users\\Lenovo\\OneDrive\\Escritorio\\ciclo DAW\\Tercer ciclo\\PFG\\Models\\FisioScan.Models.csproj"
+              "C:\\Users\\Lenovo\\OneDrive\\Escritorio\\pgfAzure\\Models\\FisioScan.Models.csproj": {
+                "projectPath": "C:\\Users\\Lenovo\\OneDrive\\Escritorio\\pgfAzure\\Models\\FisioScan.Models.csproj"
               }
             }
           }
@@ -135,14 +135,14 @@
         }
       }
     },
-    "C:\\Users\\Lenovo\\OneDrive\\Escritorio\\ciclo DAW\\Tercer ciclo\\PFG\\Models\\FisioScan.Models.csproj": {
+    "C:\\Users\\Lenovo\\OneDrive\\Escritorio\\pgfAzure\\Models\\FisioScan.Models.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Lenovo\\OneDrive\\Escritorio\\ciclo DAW\\Tercer ciclo\\PFG\\Models\\FisioScan.Models.csproj",
+        "projectUniqueName": "C:\\Users\\Lenovo\\OneDrive\\Escritorio\\pgfAzure\\Models\\FisioScan.Models.csproj",
         "projectName": "FisioScan.Models",
-        "projectPath": "C:\\Users\\Lenovo\\OneDrive\\Escritorio\\ciclo DAW\\Tercer ciclo\\PFG\\Models\\FisioScan.Models.csproj",
+        "projectPath": "C:\\Users\\Lenovo\\OneDrive\\Escritorio\\pgfAzure\\Models\\FisioScan.Models.csproj",
         "packagesPath": "C:\\Users\\Lenovo\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Lenovo\\OneDrive\\Escritorio\\ciclo DAW\\Tercer ciclo\\PFG\\Models\\obj\\",
+        "outputPath": "C:\\Users\\Lenovo\\OneDrive\\Escritorio\\pgfAzure\\Models\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Lenovo\\AppData\\Roaming\\NuGet\\NuGet.Config"

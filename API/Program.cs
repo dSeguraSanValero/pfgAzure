@@ -36,7 +36,7 @@ builder.Services.AddScoped<IMuscularAssessmentService, MuscularAssessmentService
 builder.Services.AddScoped<IAuthService, AuthService>();
 
 
-var connectionString = builder.Configuration.GetConnectionString("ServerDB_localhost");
+var connectionString = builder.Configuration.GetConnectionString("ServerDB_azure");
 
 builder.Services.AddDbContext<FisioScanContext>(options =>
     options.UseSqlServer(connectionString)
@@ -97,6 +97,13 @@ options.AddPolicy("MyAllowedOrigins",
 });
 
 var app = builder.Build();
+
+using (var scope = app.Services.CreateScope())
+{
+    var services = scope.ServiceProvider;
+    var context = services.GetRequiredService<FisioScanContext>();
+    context.Database.Migrate();
+}
 
 app.UseCors("MyAllowedOrigins");
 

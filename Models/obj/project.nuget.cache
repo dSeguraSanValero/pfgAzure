@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "fV7g7AwavEhWIlzMQyR3vioBCKalKWG/RI5hjp1Nkr5rkFnsgWKZg4fX3ETjcq1zS7j9vxUd5WxmlSABQhiVRw==",
+  "dgSpecHash": "8eIQSDymP5OXfoH8LaL+ov60LbTR79dO02MzjrcTM78QBKMxTD9dUDnWSgDIYflxtP5F3dUL6/PK2DjiiFmddg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Lenovo\\OneDrive\\Escritorio\\ciclo DAW\\Tercer ciclo\\PFG\\Models\\FisioScan.Models.csproj",
+  "projectFilePath": "C:\\Users\\Lenovo\\OneDrive\\Escritorio\\pgfAzure\\Models\\FisioScan.Models.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Lenovo\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\Lenovo\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",

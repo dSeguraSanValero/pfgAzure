@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "39S97PG/jmrU2MpRNA+6RTYIRAH8Kj9EO0ejtprRvROkyJ7tJZbrL93t8VymHcOUiIq/Fu2NRaVLk7B8/G+BfA==",
+  "dgSpecHash": "SJ2jEuQLq/SL2dBpWluU1EbSVXjk6W7s+sR8QX465FIecP5IawcVq514XGgQZx1hdkVRVW5ky5lzmfHLyTZfKA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Lenovo\\OneDrive\\Escritorio\\ciclo DAW\\Tercer ciclo\\PFG\\API\\FisioScan.API.csproj",
+  "projectFilePath": "C:\\Users\\Lenovo\\OneDrive\\Escritorio\\pgfAzure\\API\\FisioScan.API.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Lenovo\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\Lenovo\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\6.0.28\\microsoft.aspnetcore.authentication.jwtbearer.6.0.28.nupkg.sha512",
