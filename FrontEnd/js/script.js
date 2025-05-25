@@ -43,7 +43,7 @@ async function registerPhysio() {
   };
 
   try {
-      const response = await fetch('http://localhost:7238/Physio', {
+      const response = await fetch('https://fisioscan-e6f8ehddembuhch9.westeurope-01.azurewebsites.net/Physio', {
           method: 'POST',
           headers: {
               'Content-Type': 'application/json'
@@ -84,7 +84,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 async function loginPhysio(email, password) {
     try {
-        const response = await fetch("http://localhost:7238/Auth/login-fisioterapeuta", {
+        const response = await fetch("https://fisioscan-e6f8ehddembuhch9.westeurope-01.azurewebsites.net/login-fisioterapeuta", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
