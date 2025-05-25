@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "4IneD6g9EVn4fU7h875BauvV0Hb3mZ+ojMyk1rXNX74=",
+  "Source": "FisioScan.API",
+  "BasePath": "_content/FisioScan.API",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

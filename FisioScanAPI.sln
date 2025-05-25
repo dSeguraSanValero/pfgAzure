@@ -1,0 +1,40 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FisioScan.Models", "Models\FisioScan.Models.csproj", "{27F2A8B3-1FE0-4E16-89B3-54AC44B63C70}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FisioScan.Business", "Business\FisioScan.Business.csproj", "{B7538DF6-C376-4544-A1DA-58208A9A27FD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FisioScan.API", "API\FisioScan.API.csproj", "{C04D5D73-46DD-4546-AD1A-BF87C86C92BB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FisioScan.Data", "Data\FisioScan.Data.csproj", "{4BA467B9-A879-45A5-98BA-A637DCC771E1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{27F2A8B3-1FE0-4E16-89B3-54AC44B63C70}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{27F2A8B3-1FE0-4E16-89B3-54AC44B63C70}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{27F2A8B3-1FE0-4E16-89B3-54AC44B63C70}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{27F2A8B3-1FE0-4E16-89B3-54AC44B63C70}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B7538DF6-C376-4544-A1DA-58208A9A27FD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B7538DF6-C376-4544-A1DA-58208A9A27FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B7538DF6-C376-4544-A1DA-58208A9A27FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B7538DF6-C376-4544-A1DA-58208A9A27FD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C04D5D73-46DD-4546-AD1A-BF87C86C92BB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C04D5D73-46DD-4546-AD1A-BF87C86C92BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C04D5D73-46DD-4546-AD1A-BF87C86C92BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C04D5D73-46DD-4546-AD1A-BF87C86C92BB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4BA467B9-A879-45A5-98BA-A637DCC771E1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4BA467B9-A879-45A5-98BA-A637DCC771E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4BA467B9-A879-45A5-98BA-A637DCC771E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4BA467B9-A879-45A5-98BA-A637DCC771E1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,112 @@
+.background {
+background-color: rgb(232, 237, 255) !important;
+}
+
+.welcome-message {
+    margin: 3vh;
+    font-size: 5vh;
+    font-weight: bold;
+    text-align: center;
+}
+
+.main-container {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center; 
+}
+
+.card-style {
+    text-align: center;
+    width: 60vh !important;
+    margin: 15vh;
+}
+
+.card-style.active {
+    display: flex !important;
+}
+
+.date-card {
+    background-color: rgb(188, 218, 244) !important;
+    display: none !important;
+}
+
+.cause-card {
+    background-color: rgb(188, 218, 244) !important;
+    display: none !important;
+}
+
+.no-bottom-margin {
+    margin: 1vh 0 0 0 !important;
+}
+
+.general-assessment {
+    background-color: rgb(188, 218, 244) !important;
+    display: none !important;
+}
+
+.muscles-container {
+    display: none !important;
+    margin: 0 0 0 50vw !important;
+    height: 80vh !important;
+}
+
+.inputs-container {
+    overflow-y: scroll;
+    width: 100%;
+    padding: 5vh;
+}
+
+.text-input {
+    display: none !important;
+    justify-content: center;
+    align-items: center;
+    padding: 2vh;
+}
+
+.text-input.active {
+    display: flex !important;
+}
+
+.muscles-container svg {
+    position: absolute;
+    width: 575px;
+    height: 575px;
+}
+
+.overlay-container {
+    position: fixed;
+    margin: 5vh 140vw 80vh 0;
+}
+
+.overlay-image {
+    position: absolute;
+    width: 550px;
+}
+
+path {
+    opacity: 0.1;
+    transition: fill 0.3s ease, opacity 0.3s ease;
+}
+
+.muscle:hover {
+    opacity: 1;
+    cursor: pointer;
+    fill: yellow;
+}
+
+.slider-container {
+    width: 300px;
+    margin: 50px auto;
+    text-align: center;
+}
+
+input[type="range"] {
+width: 100%;
+}
+
+.value {
+font-size: 1.2em;
+margin-top: 10px;
+}
+

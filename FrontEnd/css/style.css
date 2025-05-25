@@ -1,0 +1,38 @@
+.background-image {
+    background-image: url("../images/home-background-green.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    transition: background-image 1s ease-out;
+}
+
+.background-image.green-background {
+    background-image: url("../images/home-background-green.png");
+}
+
+.background-image.pink-background {
+    background-image: url("../images/home-background-pink.jpg");
+}
+
+.blur {
+    backdrop-filter: blur(15px);
+    border-radius: 20px;
+}
+
+.title {
+    color: rgb(255, 255, 255);
+    text-shadow: 2px 2px 0 rgb(0, 0, 0);
+}
+
+.title-yellow {
+    color: rgb(255, 255, 218);
+}
+
+.title-small {
+    text-shadow: 1px 1px 0 rgb(0, 0, 0)
+}
+
+.margin-top {
+    margin-top: 10vh;
+}

@@ -1,0 +1,186 @@
+.background {
+    background-image: url("../images/home-background-green-blurr.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+.my-header {
+    display: flex;
+    width: 100%;
+}
+
+.welcome-message {
+    margin: 3vh;
+    font-size: 5vh;
+    font-weight: bold;
+    text-align: center;
+}
+
+.button-container {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 3vh;
+}
+
+.fixed {
+    position: absolute;
+}
+
+.column {
+    flex-wrap: wrap !important;
+}
+
+.main-card-container {
+    justify-content: center;
+    width: 100%;
+    display: flex;
+}
+
+.card-style {
+    text-align: center;
+    width: 35vh !important;
+    margin: 15vh;
+    box-shadow: 5px 5px 3px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+}
+
+.card-no-pointer {
+    cursor: default !important;
+}
+
+.card-style.active {
+    display: flex !important;
+}
+
+.first-cards {
+    background-color: rgb(27, 122, 205) !important;
+    display: none !important;
+}
+
+.first-cards:hover {
+    box-shadow: 8px 8px 6px rgba(0, 0, 0, 0.5); 
+}
+
+.add-cards {
+    display: none !important;
+    background-color: rgb(55, 155, 87) !important;
+}
+
+.add-cards:hover {
+    box-shadow: 8px 8px 6px rgba(0, 0, 0, 0.5) !important; 
+}
+
+.archive-cards {
+    display: none !important;
+    background-color: rgb(32, 89, 115) !important;
+}
+
+.archive-cards:hover {
+    box-shadow: 8px 8px 6px rgba(0, 0, 0, 0.5); 
+}
+
+.patients-cards {
+    display: none !important;
+    background-color: rgb(212, 211, 197) !important;
+    min-width: 80% !important;
+    margin: 0 !important;
+}
+
+.assessment-cards {
+    display: none !important;
+    background-color: rgb(212, 211, 197) !important;
+    min-width: 80% !important;
+    margin: 0 !important;
+}
+
+.treatment-cards {
+    display: none !important;
+    background-color: rgb(212, 211, 197) !important;
+    min-width: 80% !important;
+    margin: 0 !important;
+}
+
+.patient-form {
+    display: none !important;
+    background-color: rgb(218, 225, 255) !important;
+    min-width: 35% !important;
+    margin: 0 !important;
+    padding: 5vh !important;
+}
+
+.add-assesment {
+    display: none !important;
+    background-color: rgb(161, 210, 171) !important;
+    min-width: 80% !important;
+    margin: 0 !important;
+}
+
+.my-row {
+    display: block;
+    align-items: center;
+}
+
+.form-margin {
+    margin: 4vh;
+}
+
+.patient-data {
+    background-color: rgb(255, 255, 255);
+    border-radius: 5px;
+    padding: 2vh;
+    margin: 2vh;
+}
+
+.white-text {
+    color: rgb(255, 255, 255) ! important;
+}
+
+.logo {
+    width: 15vh;
+}
+
+.return-card {
+    background-color: rgb(146, 146, 146) !important;
+}
+
+.return-card:hover {
+    box-shadow: 8px 8px 6px rgba(0, 0, 0, 0.5); 
+}
+
+.patients-table {
+    width: 100%;
+    margin-top: 20px;
+}
+
+.patients-table th,
+.patients-table td {
+    border: 1px solid #000000;
+    background-color: #ededed;
+    padding: 8px;
+    text-align: left;
+}
+
+.patients-table th {
+    background-color: #b7e5ff;
+}
+
+.treatments-table {
+    width: 100%;
+    margin-top: 20px;
+}
+
+.treatments-table th,
+.treatments-table td {
+    border: 1px solid #000000;
+    background-color: #ededed;
+    padding: 8px;
+    text-align: left;
+}
+
+.treatments-table th {
+    background-color: #ffb7b7;
+}
+

@@ -1,0 +1,36 @@
+version: '3.4'
+ 
+networks:
+    fisioscan:       
+ 
+services:
+    db:
+        networks:
+            - fisioscan
+        image: mcr.microsoft.com/mssql/server:2019-CU21-ubuntu-20.04
+        ports:
+            - 8327:1433
+        environment:
+            - ACCEPT_EULA=Y
+            - MSSQL_SA_PASSWORD=Admin1234
+    api:
+        networks:
+            - fisioscan
+        image: apidb-dockerdemo:1.2
+        ports:
+            - 7238:80 
+        build:
+          context: .
+          dockerfile: API/Dockerfile
+        depends_on:
+            - db
+    frontend:
+        networks:
+            - fisioscan
+        image: nginx:alpine
+        ports:
+            - 8080:80
+        volumes:
+            - ./FrontEnd:/usr/share/nginx/html
+        depends_on:
+            - api                        

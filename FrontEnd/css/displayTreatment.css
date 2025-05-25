@@ -1,0 +1,56 @@
+.background {
+    background-image: url("../images/background.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+.main-card-container {
+    justify-content: center;
+    width: 100%;
+    display: flex;
+}
+
+.card-style {
+    text-align: center;
+    width: 100vh !important;
+    margin: 15vh;
+    box-shadow: 5px 5px 3px rgba(0, 0, 0, 0.3);
+    padding: 5vh;
+}
+
+.centered {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;    
+}
+
+.mainDiv-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mainDiv-sub-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.title {
+  z-index: 1;
+  font-size: 4vh;
+  margin-bottom: 8vh;
+}
+
+.logo {
+    right: 3vh;
+    position: absolute;
+    width: 15vh;
+}
+
+.section {
+    text-align: justify;
+}
