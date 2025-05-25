@@ -293,7 +293,6 @@ function createMuscleAssessments() {
 
 
 async function storageTreatment() {
-
     const token = sessionStorage.getItem("jwtToken");
 
     if (!token) {
@@ -302,14 +301,19 @@ async function storageTreatment() {
         return;
     }
 
+    const dateInput = document.getElementById("treatmentDate");
+    const causeInput = document.getElementById("treatmentCause");
 
-    const rawDate = document.getElementById("treatmentDate").value;
+    if (!dateInput || !causeInput) {
+        console.error("Elementos de fecha o causa no encontrados en el DOM.");
+        return;
+    }
+
+    const rawDate = dateInput.value;
     const treatmentDate = formatDateToMMDDYYYY(rawDate);
-
-    const treatmentCause = document.querySelector('input[placeholder="Treatment Cause"]').value;
+    const treatmentCause = causeInput.value;
 
     const url = `https://fisioscan-e6f8ehddembuhch9.westeurope-01.azurewebsites.net//Treatment?treatmentCause=${encodeURIComponent(treatmentCause)}&treatmentDate=${encodeURIComponent(treatmentDate)}`;
-
 
     await fetch(url, {
         method: "GET",
@@ -329,12 +333,10 @@ async function storageTreatment() {
         if (contentType && contentType.includes("application/json")) {
             const data = await response.json();
             console.log('Respuesta del servidor:', data);
-
             sessionStorage.setItem("treatmentResponse", JSON.stringify(data));
         } else {
             const text = await response.text();
             console.log('Respuesta sin JSON:', text);
-
             sessionStorage.setItem("treatmentResponseText", text);
         }
     })
@@ -343,17 +345,21 @@ async function storageTreatment() {
     });
 }
 
+
+
 function showMuscle(muscleId) {
     document.querySelectorAll(`.${muscleId}`).forEach(section => {
         section.classList.add('active');
     });
 }
 
+
 function hideMuscle(muscleId) {
     document.querySelectorAll(`.${muscleId}`).forEach(section => {
         section.classList.remove('active');
     });
 }
+
 
 document.getElementById('rotateImage').addEventListener('click', function() {
     var img = document.getElementById('muscle-map');
