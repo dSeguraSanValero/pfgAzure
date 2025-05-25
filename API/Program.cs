@@ -92,7 +92,8 @@ options.AddPolicy("MyAllowedOrigins",
     {
         policy.WithOrigins("https://zealous-smoke-0cb68de03.6.azurestaticapps.net")
             .AllowAnyHeader()
-            .AllowAnyMethod();
+            .AllowAnyMethod()
+            .AllowCredentials();
     });
 });
 
@@ -119,6 +120,8 @@ app.UseCors("MyAllowedOrigins");
 
 app.UseSwagger();
 app.UseSwaggerUI();
+
+app.UseHttpsRedirection();
 
 app.UseAuthentication();
 
