@@ -12,9 +12,9 @@ window.onload = async function() {
     const container = document.getElementById('main-container');
     const mainDiv = document.createElement('div');
 
-    const physioUrl = `http://localhost:7238/Physio?physioId=${encodeURIComponent(treatment.createdBy)}`;
-    const muscularAssessmentUrl = `http://localhost:7238/MuscularAssessment?treatmentId=${encodeURIComponent(treatment.treatmentId)}`;
-    const generalAssessmentUrl = `http://localhost:7238/GeneralAssessment?treatmentId=${encodeURIComponent(treatment.treatmentId)}`;
+    const physioUrl = `https://fisioscan-e6f8ehddembuhch9.westeurope-01.azurewebsites.net/Physio?physioId=${encodeURIComponent(treatment.createdBy)}`;
+    const muscularAssessmentUrl = `https://fisioscan-e6f8ehddembuhch9.westeurope-01.azurewebsites.net/MuscularAssessment?treatmentId=${encodeURIComponent(treatment.treatmentId)}`;
+    const generalAssessmentUrl = `https://fisioscan-e6f8ehddembuhch9.westeurope-01.azurewebsites.net/GeneralAssessment?treatmentId=${encodeURIComponent(treatment.treatmentId)}`;
 
     try {
 

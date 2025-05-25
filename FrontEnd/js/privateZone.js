@@ -50,7 +50,7 @@ function showSection(sectionClass) {
 
 async function getPhysioName(token) {
     try {
-        const response = await fetch("http://localhost:7238/Physio", {
+        const response = await fetch("https://fisioscan-e6f8ehddembuhch9.westeurope-01.azurewebsites.net/Physio", {
             method: "GET",
             headers: {
                 "Authorization": `Bearer ${token}`,
@@ -119,7 +119,7 @@ async function fetchPatients(text) {
         const secondSurnames = getInputValues(secondSurnameInputs);
         const nifs = getInputValues(nifInputs);
 
-        let url = "http://localhost:7238/Patient";
+        let url = "https://fisioscan-e6f8ehddembuhch9.westeurope-01.azurewebsites.net/Patient";
 
         let params = [];
 
@@ -265,7 +265,7 @@ async function fetchTreatments(patientId) {
         const treatmentCause = getInputValues(treatmentCauseInputs);
         const treatmentDate = getInputValues(treatmentDateInputs);
 
-        let url = "http://localhost:7238/Treatment";
+        let url = "https://fisioscan-e6f8ehddembuhch9.westeurope-01.azurewebsites.net/Treatment";
 
         let params = [];
 
@@ -371,7 +371,7 @@ async function addTreatment(dni) {
             return;
         }
 
-        const url = `http://localhost:7238/Patient?dni=${encodeURIComponent(dni)}`;
+        const url = `https://fisioscan-e6f8ehddembuhch9.westeurope-01.azurewebsites.net/Patient?dni=${encodeURIComponent(dni)}`;
         const response = await fetch(url, {
             method: "GET",
             headers: {
@@ -416,7 +416,7 @@ async function searchTreatment(patientId) {
             return;
         }
 
-        const url = `http://localhost:7238/Patient?patientId=${encodeURIComponent(patientId)}`;
+        const url = `https://fisioscan-e6f8ehddembuhch9.westeurope-01.azurewebsites.net/Patient?patientId=${encodeURIComponent(patientId)}`;
         const response = await fetch(url, {
             method: "GET",
             headers: {
@@ -465,7 +465,7 @@ async function displayTreatment(treatmentId) {
         }
 
     
-        const url = `http://localhost:7238/Treatment?treatmentId=${encodeURIComponent(treatmentId)}`;
+        const url = `https://fisioscan-e6f8ehddembuhch9.westeurope-01.azurewebsites.net/Treatment?treatmentId=${encodeURIComponent(treatmentId)}`;
         const response = await fetch(url, {
             method: "GET",
             headers: {
@@ -510,7 +510,7 @@ async function sendForm() {
         birthDate: new Date(birthDate).toISOString(),
     };
 
-    fetch('http://localhost:7238/Patient', {
+    fetch('https://fisioscan-e6f8ehddembuhch9.westeurope-01.azurewebsites.net/Patient', {
         method: 'POST',
         headers: {
         "Authorization": `Bearer ${token}`,

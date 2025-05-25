@@ -53,7 +53,7 @@ function showSection(sectionClass) {
 
 async function getPhysioName(token) {
     try {
-        const response = await fetch("http://localhost:7238/Physio", {
+        const response = await fetch("https://fisioscan-e6f8ehddembuhch9.westeurope-01.azurewebsites.net/Physio", {
             method: "GET",
             headers: {
                 "Authorization": `Bearer ${token}`,
@@ -118,7 +118,7 @@ async function createTreatment() {
         treatmentDate: new Date(treatmentDate).toISOString(),
     };
 
-    fetch('http://localhost:7238/Treatment', {
+    fetch('https://fisioscan-e6f8ehddembuhch9.westeurope-01.azurewebsites.net/Treatment', {
         method: 'POST',
         headers: {
             "Authorization": `Bearer ${token}`,
@@ -188,7 +188,7 @@ function createGeneralAssessment() {
         medicalHistory: generalAssessmentMedicalHistory,
     }
 
-    fetch('http://localhost:7238/GeneralAssessment', {
+    fetch('https://fisioscan-e6f8ehddembuhch9.westeurope-01.azurewebsites.net/GeneralAssessment', {
     method: 'POST',
     headers: {
         "Authorization": `Bearer ${token}`,
@@ -253,7 +253,7 @@ function createMuscleAssessments() {
 
             console.log(`Enviando datos para ${muscleName}:`, muscleData);
 
-            fetch('http://localhost:7238/MuscularAssessment', {
+            fetch('https://fisioscan-e6f8ehddembuhch9.westeurope-01.azurewebsites.net/MuscularAssessment', {
                 method: 'POST',
                 headers: {
                     "Authorization": `Bearer ${token}`,
@@ -304,7 +304,7 @@ async function storageTreatment() {
     const treatmentDate = document.querySelector('input[placeholder="Treatment Date"]').value;
     const treatmentCause = document.querySelector('input[placeholder="Treatment Cause"]').value;
 
-    const url = `http://localhost:7238/Treatment?treatmentCause=${encodeURIComponent(treatmentCause)}&treatmentDate=${encodeURIComponent(treatmentDate)}`;
+    const url = `https://fisioscan-e6f8ehddembuhch9.westeurope-01.azurewebsites.net//Treatment?treatmentCause=${encodeURIComponent(treatmentCause)}&treatmentDate=${encodeURIComponent(treatmentDate)}`;
 
 
     await fetch(url, {
