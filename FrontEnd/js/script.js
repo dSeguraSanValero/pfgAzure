@@ -84,7 +84,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 async function loginPhysio(email, password) {
     try {
-        const response = await fetch("https://fisioscan-e6f8ehddembuhch9.westeurope-01.azurewebsites.net/login-fisioterapeuta", {
+        const response = await fetch("https://fisioscan-e6f8ehddembuhch9.westeurope-01.azurewebsites.net/Auth/login-fisioterapeuta", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
