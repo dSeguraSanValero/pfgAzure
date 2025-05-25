@@ -302,7 +302,11 @@ async function storageTreatment() {
         return;
     }
 
-    const treatmentDate = document.querySelector('input[placeholder="Treatment Date"]').value;
+
+    const rawDate = document.getElementById("treatmentDate").value;
+    const formatDate = formatDateToMMDDYYYY(rawDate);
+
+    const treatmentDate = formatDate;
     const treatmentCause = document.querySelector('input[placeholder="Treatment Cause"]').value;
 
     const url = `https://fisioscan-e6f8ehddembuhch9.westeurope-01.azurewebsites.net//Treatment?treatmentCause=${encodeURIComponent(treatmentCause)}&treatmentDate=${encodeURIComponent(treatmentDate)}`;
