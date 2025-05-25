@@ -98,6 +98,23 @@ options.AddPolicy("MyAllowedOrigins",
 
 var app = builder.Build();
 
+
+try
+{
+    using (var scope = app.Services.CreateScope())
+    {
+        var services = scope.ServiceProvider;
+        var context = services.GetRequiredService<FisioScanContext>();
+        context.Database.Migrate();
+    }
+}
+catch (Exception ex)
+{
+    // Loguear error
+    Console.WriteLine("Error applying migrations: " + ex.Message);
+}
+
+
 app.UseCors("MyAllowedOrigins");
 
 app.UseSwagger();
