@@ -94,10 +94,10 @@ async function getPhysioName(token) {
     }
 }
 
-async function createTreatment() {
 
+async function createTreatment() {
     const token = sessionStorage.getItem("jwtToken");
-        
+
     if (!token) {
         console.error("Token no encontrado. Redirigiendo a la página de login.");
         window.location.href = "index.html";
@@ -105,17 +105,18 @@ async function createTreatment() {
     }
 
     const patientData = sessionStorage.getItem("patientData");
-
     const patient = JSON.parse(patientData);
-    
     const patientId = patient.patientId;
-    const treatmentDate = document.querySelector('input[placeholder="Treatment Date"]').value;
-    const treatmentCause = document.querySelector('input[placeholder="Treatment Cause"]').value;
+
+    const rawDate = document.getElementById("treatmentDate").value;
+    const treatmentCause = document.getElementById("treatmentCause").value;
+
+    const formattedDate = formatDateToMMDDYYYY(rawDate);
 
     const treatmentData = {
         patientId: patientId,
         treatmentCause: treatmentCause,
-        treatmentDate: new Date(treatmentDate).toISOString(),
+        treatmentDate: formattedDate,
     };
 
     fetch('https://fisioscan-e6f8ehddembuhch9.westeurope-01.azurewebsites.net/Treatment', {
@@ -143,10 +144,10 @@ async function createTreatment() {
         }
 
         await storageTreatment();
-
-    })
-
+    });
 }
+
+
 
 function createGeneralAssessment() {
 
@@ -406,4 +407,24 @@ document.getElementById('rotateImage').addEventListener('click', function() {
         `;
     }
 });
+
+
+function formatDateToMMDDYYYY(dateString) {
+    const date = new Date(dateString);
+    const mm = String(date.getMonth() + 1).padStart(2, '0');
+    const dd = String(date.getDate()).padStart(2, '0');
+    const yyyy = date.getFullYear();
+    return `${mm}-${dd}-${yyyy}`;
+}
+
+
+function updateFormattedDate() {
+    const rawDate = document.getElementById("treatmentDate").value;
+    const preview = document.getElementById("formattedDatePreview");
+    if (rawDate) {
+        preview.textContent = formatDateToMMDDYYYY(rawDate);
+    } else {
+        preview.textContent = "None";
+    }
+}
 
