@@ -10,51 +10,58 @@
 <body class="background">
 
     <div class="card align-items-center card-style patient-form">
-        <form id="registerPhysioForm" style="background-color: #e6f0fa; padding: 20px; border-radius: 10px;">
-            <div class="title"><strong>Edite your profile</strong></div>
-            <div class="row">
-                <div class="col-md-6 mb-4">
+            <form id="registerPhysioForm" style="background-color: #e6f0fa; padding: 20px; border-radius: 10px;">
+                <div class="title"><strong>Edite your profile</strong></div>
+                <div class="row">
+                    <div class="col-md-6 mb-4">
+                        <div data-mdb-input-init class="form-outline">
+                            <input type="text" id="physioName" name="name" class="form-control margin-top" required />
+                            <label class="form-label" for="physioName">First name</label>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-4">
+                        <div data-mdb-input-init class="form-outline">
+                            <input type="text" id="physioFirstSurname" name="lastName" class="form-control margin-top" required />
+                            <label class="form-label" for="physioLastName">First Surname</label>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-4">
                     <div data-mdb-input-init class="form-outline">
-                        <input type="text" id="physioName" name="name" class="form-control margin-top" required />
-                        <label class="form-label" for="physioName">First name</label>
+                        <input type="text" id="physioSecondSurname" name="lastName" class="form-control" required />
+                        <label class="form-label" for="physioLastName">Second Surname</label>
+                    </div>
                     </div>
                 </div>
-                <div class="col-md-6 mb-4">
-                    <div data-mdb-input-init class="form-outline">
-                        <input type="text" id="physioFirstSurname" name="lastName" class="form-control margin-top" required />
-                        <label class="form-label" for="physioLastName">First Surname</label>
-                    </div>
+        
+                <div data-mdb-input-init class="w-50 mx-auto form-outline mb-4">
+                    <input type="number" id="registrationNumber" name="registrationNumber" class="form-control" required />
+                    <label class="form-label" for="registrationNumber">Registration number</label>
                 </div>
-                <div class="col-md-6 mb-4">
-                <div data-mdb-input-init class="form-outline">
-                    <input type="text" id="physioSecondSurname" name="lastName" class="form-control" required />
-                    <label class="form-label" for="physioLastName">Second Surname</label>
+        
+                <div data-mdb-input-init class="w-50 mx-auto form-outline mb-4">
+                    <input type="email" id="email" name="email" class="form-control" required />
+                    <label class="form-label" for="email">Email address</label>
                 </div>
+        
+                <div class="w-50 mx-auto form-outline mb-4 position-relative">
+                    <input type="password" id="password" name="password" class="form-control pe-5" required />
+                    <label class="form-label" for="password">Password</label>
+                    <button
+                        type="button"
+                        class="btn btn-outline-secondary show-password-btn"
+                        onclick="togglePasswordVisibility()"
+                    >
+                        👁️
+                    </button>
                 </div>
-            </div>
-    
-            <div data-mdb-input-init class="w-75 mx-auto form-outline mb-4">
-                <input type="number" id="registrationNumber" name="registrationNumber" class="form-control" required />
-                <label class="form-label" for="registrationNumber">Registration number</label>
-            </div>
-    
-            <div data-mdb-input-init class="w-75 mx-auto form-outline mb-4">
-                <input type="email" id="email" name="email" class="form-control" required />
-                <label class="form-label" for="email">Email address</label>
-            </div>
-    
-            <div data-mdb-input-init class="w-75 mx-auto form-outline mb-4">
-                <input type="password" id="password" name="password" class="form-control" required />
-                <label class="form-label" for="password">Password</label>
-            </div>
-    
-            <button type="button" onclick="" class="btn btn-success btn-block mb-4">
-                Save
-            </button>
-            <button type="button" onclick="window.location.href='./privateZone.html'" class="btn btn-danger btn-block mb-4">
-                Cancel
-            </button>
-        </form>
+        
+                <button type="button" onclick="" class="btn btn-success btn-block mb-4">
+                    Save
+                </button>
+                <button type="button" onclick="window.location.href='./privateZone.html'" class="btn btn-danger btn-block mb-4">
+                    Cancel
+                </button>
+            </form>
     </div>
 
   <script src="./js/editPhysioDetails.js"></script>
