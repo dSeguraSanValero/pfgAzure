@@ -1,0 +1,23 @@
+.background {
+    background-image: url("../images/background-physio-details.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    justify-content: center;
+    width: 100%;
+    display: flex;
+    padding: 5vh;
+}
+
+.card-style {
+    text-align: center;
+    width: 45vw !important;
+    box-shadow: 5px 5px 3px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+}
+
+.title {
+    font-size: 3vh;
+    margin-bottom: 2vh;
+}

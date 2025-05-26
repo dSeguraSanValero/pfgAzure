@@ -79,7 +79,7 @@ async function getPhysioName(token) {
             const physioDiv = document.createElement('div');
 
             physioDiv.innerHTML = `
-                <p><strong>¡Bienvenido ${physio.name}!</strong></p>
+                <p><strong>Welcome ${physio.name}!</strong></p>
             `;
 
             container.appendChild(physioDiv);
@@ -541,7 +541,7 @@ function popUserOptions() {
         denyButtonText: "Log Off"
         }).then((result) => {
         if (result.isConfirmed) {
-            Swal.fire("Saved!", "", "success");
+            window.location.href = "editPhysioDetails.html";
         } else if (result.isDenied) {
             logOff();
         }
