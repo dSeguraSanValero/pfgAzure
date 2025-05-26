@@ -530,6 +530,25 @@ async function sendForm() {
 }
 
 
+function popUserOptions() {
+    Swal.fire({
+        position: "top-end",
+        title: "User Options",
+        showCancelButton: true,
+        showDenyButton: true,
+        confirmButtonText: "Edit Profile",
+        confirmButtonColor: "#ff911c",
+        denyButtonText: "Log Off"
+        }).then((result) => {
+        if (result.isConfirmed) {
+            Swal.fire("Saved!", "", "success");
+        } else if (result.isDenied) {
+            logOff();
+        }
+    });
+}
+
+
 function logOff() {
 
     sessionStorage.clear();
