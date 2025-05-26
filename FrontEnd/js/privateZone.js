@@ -212,7 +212,21 @@ async function fetchPatients(text) {
         
                     if (text === 'show') {
                         button.addEventListener('click', () => {
-                            alert(`DNI: ${patient.dni}\nFecha de nacimiento: ${patient.birthDate}`);
+                            Swal.fire({
+                                title: `${patient.name}, ${patient.firstSurname}, ${patient.secondSurname}`,
+                                showCancelButton: true,
+                                showDenyButton: true,
+                                confirmButtonText: "Edit patient details",
+                                confirmButtonColor: "#ff911c",
+                                denyButtonText: "Delete patient",
+                                }).then((result) => {
+                                if (result.isConfirmed) {
+                                    sessionStorage.setItem("patientToEdit", JSON.stringify(patient));
+                                    window.location.href = "editPatientDetails.html";
+                                } else if (result.isDenied) {
+                                    deletePatient(patient.patientId);
+                                }
+                            });
                         });
                     }
         
