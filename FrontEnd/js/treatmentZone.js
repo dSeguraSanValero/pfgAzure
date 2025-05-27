@@ -108,10 +108,8 @@ async function createTreatment() {
     const patient = JSON.parse(patientData);
     const patientId = patient.patientId;
 
-    const rawDate = document.getElementById("treatmentDate").value;
+    const formattedDate = document.getElementById("treatmentDate").value;
     const treatmentCause = document.getElementById("treatmentCause").value;
-
-    const formattedDate = formatDateToMMDDYYYY(rawDate);
 
     const treatmentData = {
         patientId: patientId,
@@ -430,15 +428,20 @@ function formatDateToMMDDYYYY(dateString) {
 function updateFormattedDate() {
     const rawDate = document.getElementById("treatmentDate").value;
     const preview = document.getElementById("formattedDatePreview");
-    const input = document.getElementById("treatmentDate");
-    
     if (rawDate) {
         preview.textContent = formatDateToMMDDYYYY(rawDate);
-        input.style.display = "none";
     } else {
         preview.textContent = "None";
-        input.style.display = "block";
     }
 }
+
+
+$(document).ready(function () {
+  $('#treatmentDate').datepicker({
+    format: 'mm-dd-yyyy',
+    autoclose: true,
+    todayHighlight: true
+  });
+});
 
 
