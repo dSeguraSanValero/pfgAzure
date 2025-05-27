@@ -430,10 +430,15 @@ function formatDateToMMDDYYYY(dateString) {
 function updateFormattedDate() {
     const rawDate = document.getElementById("treatmentDate").value;
     const preview = document.getElementById("formattedDatePreview");
+    const input = document.getElementById("treatmentDate");
+    
     if (rawDate) {
         preview.textContent = formatDateToMMDDYYYY(rawDate);
+        input.style.display = "none";
     } else {
         preview.textContent = "None";
+        input.style.display = "block";
     }
 }
+
 
