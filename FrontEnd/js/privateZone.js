@@ -365,7 +365,6 @@ async function fetchTreatments(patientId) {
                     const displayButton = row.querySelector('.display-button');
                     displayButton.addEventListener('click', () => {
                         storageTreatment(treatment.treatmentId);
-                        window.location.href = "displayTreatment.html";
                     });
 
                     const editButton = row.querySelector('.edit-button');
@@ -379,8 +378,7 @@ async function fetchTreatments(patientId) {
                             denyButtonText: "Delete treatment"
                             }).then((result) => {
                                 if (result.isConfirmed) {
-                                    storageTreatment(treatment.treatmentId);
-                                    window.location.href = "editTreatment.html";
+                                    editTreatment(treatment.treatmentId);
                                     
                                 } else if (result.isDenied) {
                                     deleteTreatment(treatment.treatmentId);
@@ -536,6 +534,41 @@ async function storageTreatment(treatmentId) {
     } catch (error) {
         console.error("Error en la función storageTreatment:", error);
     }   
+
+    window.location.href = "displayTreatment.html";
+}
+
+
+async function editTreatment(treatmentId) {
+    try {
+
+        const token = sessionStorage.getItem("jwtToken");
+
+        if (!token) {
+            console.error("Token no encontrado. Redirigiendo a la página de login.");
+            window.location.href = "index.html";
+            return;
+        }
+
+    
+        const url = `https://fisioscan-e6f8ehddembuhch9.westeurope-01.azurewebsites.net/Treatment?treatmentId=${encodeURIComponent(treatmentId)}`;
+        const response = await fetch(url, {
+            method: "GET",
+            headers: {
+                "Authorization": `Bearer ${token}`,
+                "Content-Type": "application/json"
+            }
+        });
+
+        const treatmentData = await response.json();
+
+        sessionStorage.setItem("thisTreatment", JSON.stringify(treatmentData[0]));
+
+    } catch (error) {
+        console.error("Error en la función storageTreatment:", error);
+    }   
+
+    window.location.href = "editTreatment.html";
 }
 
 
