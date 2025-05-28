@@ -521,7 +521,7 @@ async function deletePatient(patientId) {
     }
 
     try {
-        const response = await fetch(`https://fisioscan-e6f8ehddembuhch9.westeurope-01.azurewebsites.net/${patientId}`, {
+        const response = await fetch(`https://fisioscan-e6f8ehddembuhch9.westeurope-01.azurewebsites.net/Patient/${patientId}`, {
             method: "DELETE",
             headers: {
                 "Authorization": `Bearer ${token}`,
