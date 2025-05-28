@@ -351,15 +351,26 @@ async function fetchTreatments(patientId) {
                         <td>${index + 1}</td>
                         <td>${treatment.treatmentCause}</td>
                         <td>${treatment.treatmentDate}</td>
-                        <td><button class="btn btn-success action-button">Select</button></td>
+                        <td><button class="btn btn-success display-button">Select</button></td>
+                        <td><button class="btn btn-warning edit-button">Select</button></td>
                     `;
 
-                    const button = row.querySelector('.action-button');
-
-                    button.addEventListener('click', () => {
-                        displayTreatment(treatment.treatmentId)
+                    const displayButton = row.querySelector('.display-button');
+                    displayButton.addEventListener('click', () => {
+                        displayTreatment(treatment.treatmentId);
                     });
-        
+
+                    const editButton = row.querySelector('.edit-button');
+                    editButton.addEventListener('click', () => {
+                        Swal.fire({
+                            title: `${treatment.treatmentCause}, ${treatment.treatmentDate}`,
+                            showCancelButton: true,
+                            showDenyButton: true,
+                            confirmButtonText: "Edit treatment",
+                            confirmButtonColor: "#ff911c",
+                            denyButtonText: "Delete treatment"
+                        });
+                    });
                     tbody.appendChild(row);
                 });
         
