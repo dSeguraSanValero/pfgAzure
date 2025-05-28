@@ -364,7 +364,8 @@ async function fetchTreatments(patientId) {
 
                     const displayButton = row.querySelector('.display-button');
                     displayButton.addEventListener('click', () => {
-                        displayTreatment(treatment.treatmentId);
+                        storageTreatment(treatment.treatmentId);
+                        window.location.href = "displayTreatment.html";
                     });
 
                     const editButton = row.querySelector('.edit-button');
@@ -378,7 +379,9 @@ async function fetchTreatments(patientId) {
                             denyButtonText: "Delete treatment"
                             }).then((result) => {
                                 if (result.isConfirmed) {
-                                    console.log("Edit treatment button clicked");
+                                    storageTreatment(treatment.treatmentId);
+                                    window.location.href = "editTreatment.html";
+                                    
                                 } else if (result.isDenied) {
                                     deleteTreatment(treatment.treatmentId);
                                 }
@@ -505,7 +508,7 @@ async function searchTreatment(patientId) {
 }
 
 
-async function displayTreatment(treatmentId) {
+async function storageTreatment(treatmentId) {
     try {
 
         const token = sessionStorage.getItem("jwtToken");
@@ -530,10 +533,8 @@ async function displayTreatment(treatmentId) {
 
         sessionStorage.setItem("thisTreatment", JSON.stringify(treatmentData[0]));
 
-        window.location.href = "displayTreatment.html";
-
     } catch (error) {
-        console.error("Error en la función displayTreatment:", error);
+        console.error("Error en la función storageTreatment:", error);
     }   
 }
 
