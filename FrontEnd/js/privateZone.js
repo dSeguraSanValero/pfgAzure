@@ -644,7 +644,7 @@ async function deleteTreatment(treatmentId) {
 
     try {
 
-        const muscularResponse = await fetch(`http://localhost:7238/MuscularAssessment?treatmentId=${encodeURIComponent(treatmentId)}`, {
+        const muscularResponse = await fetch(`https://fisioscan-e6f8ehddembuhch9.westeurope-01.azurewebsites.net/MuscularAssessment?treatmentId=${encodeURIComponent(treatmentId)}`, {
             method: "DELETE",
             headers
         });
@@ -656,7 +656,7 @@ async function deleteTreatment(treatmentId) {
         }
 
 
-        const generalResponse = await fetch(`http://localhost:7238/GeneralAssessment?treatmentId=${encodeURIComponent(treatmentId)}`, {
+        const generalResponse = await fetch(`https://fisioscan-e6f8ehddembuhch9.westeurope-01.azurewebsites.net/GeneralAssessment?treatmentId=${encodeURIComponent(treatmentId)}`, {
             method: "DELETE",
             headers
         });
@@ -668,7 +668,7 @@ async function deleteTreatment(treatmentId) {
         }
 
 
-        const treatmentResponse = await fetch(`http://localhost:7238/Treatment/${treatmentId}`, {
+        const treatmentResponse = await fetch(`https://fisioscan-e6f8ehddembuhch9.westeurope-01.azurewebsites.net/Treatment/${treatmentId}`, {
             method: "DELETE",
             headers
         });
