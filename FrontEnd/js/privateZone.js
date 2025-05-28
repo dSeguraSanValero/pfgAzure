@@ -514,7 +514,7 @@ async function sendForm() {
     const firstSurname = document.querySelector('input[placeholder="Form First Surname"]').value;
     const secondSurname = document.querySelector('input[placeholder="Form Second Surname"]').value;
     const nif = document.querySelector('input[placeholder="Form NIF"]').value;
-    const birthDate = document.querySelector('input[placeholder="Form Birth Date"]').value;
+    const birthDate = document.getElementById("birthDate").value;
 
     const patientData = {
         name: name,
@@ -572,3 +572,11 @@ function logOff() {
 
     return;
 }
+
+$(document).ready(function () {
+  $('#birthDate').datepicker({
+    format: 'mm-dd-yyyy',
+    autoclose: true,
+    todayHighlight: true
+  });
+});
