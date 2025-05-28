@@ -376,7 +376,13 @@ async function fetchTreatments(patientId) {
                             confirmButtonText: "Edit treatment",
                             confirmButtonColor: "#ff911c",
                             denyButtonText: "Delete treatment"
-                        });
+                            }).then((result) => {
+                                if (result.isConfirmed) {
+                                    console.log("Edit treatment button clicked");
+                                } else if (result.isDenied) {
+                                    deleteTreatment(treatment.treatmentId);
+                                }
+                            });
                     });
                     tbody.appendChild(row);
                 });
@@ -620,6 +626,74 @@ async function sendForm() {
         });
     });
 }
+
+
+async function deleteTreatment(treatmentId) {
+    const token = sessionStorage.getItem("jwtToken");
+
+    if (!token) {
+        console.error("Token no encontrado. Redirigiendo a la página de login.");
+        window.location.href = "index.html";
+        return;
+    }
+
+    const headers = {
+        "Authorization": `Bearer ${token}`,
+        "Content-Type": "application/json"
+    };
+
+    try {
+
+        const muscularResponse = await fetch(`http://localhost:7238/MuscularAssessment?treatmentId=${encodeURIComponent(treatmentId)}`, {
+            method: "DELETE",
+            headers
+        });
+
+        if (!muscularResponse.ok) {
+            console.error("Error al eliminar evaluaciones musculares:", muscularResponse.status);
+            alert("No se pudieron eliminar las evaluaciones musculares.");
+            return;
+        }
+
+
+        const generalResponse = await fetch(`http://localhost:7238/GeneralAssessment?treatmentId=${encodeURIComponent(treatmentId)}`, {
+            method: "DELETE",
+            headers
+        });
+
+        if (!generalResponse.ok) {
+            console.error("Error al eliminar la evaluación general:", generalResponse.status);
+            alert("No se pudo eliminar la evaluación general.");
+            return;
+        }
+
+
+        const treatmentResponse = await fetch(`http://localhost:7238/Treatment/${treatmentId}`, {
+            method: "DELETE",
+            headers
+        });
+
+        if (!treatmentResponse.ok) {
+            console.error("Error al eliminar el tratamiento:", treatmentResponse.status);
+            alert("No se pudo eliminar el tratamiento.");
+            return;
+        }
+
+
+        Swal.fire({
+            icon: "success",
+            title: "Treatment deleted successfully"
+        });
+
+
+        window.location.href = "privateZone.html";
+
+    } catch (error) {
+        console.error("Error en la función deleteTreatment:", error);
+        alert("Ocurrió un error inesperado al eliminar el tratamiento.");
+    }
+}
+
 
 
 function popUserOptions() {

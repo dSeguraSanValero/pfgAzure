@@ -119,37 +119,34 @@ namespace FisioScan.API.Controllers
 
 
         [Authorize]
-        [HttpDelete("{muscularAssessmentId}")]
-        public IActionResult RemoveMuscularAssessment(int muscularAssessmentId)
+        [HttpDelete]
+        public IActionResult RemoveMuscularAssessments([FromQuery] int treatmentId)
         {
-            if (_authService.HasAccessToResource(User, out int? rolePhysioId))
+            if (!_authService.HasAccessToResource(User, out int? rolePhysioId))
+                return Unauthorized("Acceso denegado");
+
+            try
             {
-                if (rolePhysioId == null)
-                {
-                    var muscularAssessment = _muscularAssessmentService.GetMuscularAssessments(muscularAssessmentId, null, null, null, null).FirstOrDefault();
-                    if (muscularAssessment == null)
-                    {
-                        return NotFound("Valoración muscular no encontrada.");
-                    }
+                var muscularAssessments = _muscularAssessmentService
+                    .GetMuscularAssessments(null, rolePhysioId, treatmentId, null, null)
+                    .ToList();
 
-                    _muscularAssessmentService.RemoveMuscularAssessment(muscularAssessment);
-                    return Ok(new { message = "Valoración muscular eliminada correctamente" });
+                if (!muscularAssessments.Any())
+                {
+                    return NotFound("No se encontraron evaluaciones musculares asociadas al tratamiento.");
                 }
 
-                if (rolePhysioId.HasValue)
+                foreach (var assessment in muscularAssessments)
                 {
-                    var muscularAssessment = _muscularAssessmentService.GetMuscularAssessments(muscularAssessmentId, rolePhysioId.Value, null, null, null).FirstOrDefault();
-                    if (muscularAssessment == null)
-                    {
-                        return NotFound("Valoración muscular no encontrada.");
-                    }
-
-                    _muscularAssessmentService.RemoveMuscularAssessment(muscularAssessment);
-                    return Ok(new { message = "Valoración muscular eliminada correctamente" });
+                    _muscularAssessmentService.RemoveMuscularAssessment(assessment);
                 }
+
+                return Ok(new { message = "Evaluaciones musculares eliminadas correctamente" });
             }
-
-            return Unauthorized("Acceso denegado");
+            catch (Exception ex)
+            {
+                return BadRequest(new { error = "Error al eliminar evaluaciones musculares", details = ex.Message });
+            }
         }
 
 

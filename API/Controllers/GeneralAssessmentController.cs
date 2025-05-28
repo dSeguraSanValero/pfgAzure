@@ -131,51 +131,36 @@ namespace FisioScan.API.Controllers
 
 
         [Authorize]
-        [HttpDelete("{generalAssessmentId}")]
-        public IActionResult RemoveGeneralAssessment(int generalAssessmentId)
+        [HttpDelete]
+        public IActionResult RemoveGeneralAssessments([FromQuery] int treatmentId)
         {
-            if (_authService.HasAccessToResource(User, out int? rolePhysioId))
+            if (!_authService.HasAccessToResource(User, out int? rolePhysioId))
+                return Unauthorized("Acceso denegado");
+
+            try
             {
-                if (rolePhysioId == null)
-                {
-                    try
-                    {
-                        var generalAssessment = _generalAssessmentService.GetGeneralAssessments(generalAssessmentId, null, null, null, null, null, null, null, null).FirstOrDefault();
-                        if (generalAssessment == null)
-                        {
-                            return NotFound("Valoración general no encontrada.");
-                        }
+                // Obtener todas las valoraciones generales asociadas al tratamiento y (si aplica) al fisioterapeuta
+                var generalAssessments = _generalAssessmentService
+                    .GetGeneralAssessments(null, rolePhysioId, treatmentId, null, null, null, null, null, null)
+                    .ToList();
 
-                        _generalAssessmentService.RemoveGeneralAssessment(generalAssessment);
-                        return Ok(new { message = "Valoración general eliminada correctamente" });
-                    }
-                    catch (Exception e)
-                    {
-                        return BadRequest(e.Message);
-                    }
+                if (!generalAssessments.Any())
+                {
+                    return NotFound("No se encontraron valoraciones generales asociadas al tratamiento.");
                 }
 
-                if (rolePhysioId.HasValue)
+                // Eliminar cada una
+                foreach (var assessment in generalAssessments)
                 {
-                    try
-                    {
-                        var generalAssessment = _generalAssessmentService.GetGeneralAssessments(generalAssessmentId, rolePhysioId.Value, null, null, null, null, null, null, null).FirstOrDefault();
-                        if (generalAssessment == null)
-                        {
-                            return NotFound("Valoración general no encontrada.");
-                        }
-
-                        _generalAssessmentService.RemoveGeneralAssessment(generalAssessment);
-                        return Ok(new { message = "Valoración general eliminada correctamente" });
-                    }
-                    catch (Exception e)
-                    {
-                        return BadRequest(e.Message);
-                    }
+                    _generalAssessmentService.RemoveGeneralAssessment(assessment);
                 }
+
+                return Ok(new { message = "Valoraciones generales eliminadas correctamente." });
             }
-
-            return Unauthorized("Acceso denegado");
+            catch (Exception ex)
+            {
+                return BadRequest(new { error = "Error al eliminar valoraciones generales", details = ex.Message });
+            }
         }
 
 
