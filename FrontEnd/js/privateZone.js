@@ -532,7 +532,7 @@ async function sendForm() {
         firstSurname: firstSurname,
         secondSurname: secondSurname,
         dni: nif,
-        birthDate: new Date(birthDate).toISOString(),
+        birthDate: birthDate,
     };
 
     fetch('https://fisioscan-e6f8ehddembuhch9.westeurope-01.azurewebsites.net/Patient', {
