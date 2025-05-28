@@ -511,6 +511,39 @@ async function displayTreatment(treatmentId) {
 }
 
 
+async function deletePatient(patientId) {
+    const token = sessionStorage.getItem("jwtToken");
+
+    if (!token) {
+        console.error("Token no encontrado. Redirigiendo a la página de login.");
+        window.location.href = "index.html";
+        return;
+    }
+
+    try {
+        const response = await fetch(`https://fisioscan-e6f8ehddembuhch9.westeurope-01.azurewebsites.net/${patientId}`, {
+            method: "DELETE",
+            headers: {
+                "Authorization": `Bearer ${token}`,
+                "Content-Type": "application/json"
+            }
+        });
+
+        if (!response.ok) {
+            console.error("Error al eliminar el paciente. Código de estado: " + response.status);
+            alert("No se pudo eliminar el paciente. Intenta de nuevo.");
+            return;
+        }
+
+        alert("Paciente eliminado correctamente.");
+        window.location.href = "privateZone.html";
+
+    } catch (error) {
+        console.error("Error en la función deletePatient:", error);
+    }
+}
+
+
 async function sendForm() {
 
     const token = sessionStorage.getItem("jwtToken");
