@@ -161,8 +161,11 @@ async function fetchPatients(text) {
 
 
         if (!response.ok) {
-            console.error("Error al obtener los pacientes. Código de estado: " + response.status);
-            alert("No se encontraron pacientes con esos datos. Intenta de nuevo.");
+            Swal.fire({
+            title: "No patients found",
+            text: "Please, create a new patient",
+            icon: "question"
+            });
             return;
         }        
 
@@ -314,9 +317,13 @@ async function fetchTreatments(patientId) {
 
         if (!response.ok) {
             console.error("Error al obtener los tratamientos. Código de estado: " + response.status);
-            alert("No se encontraron tratamientos con esos datos. Intenta de nuevo.");
+            Swal.fire({
+                title: "No treatments found",
+                text: "Please, create a new treatment, or enter a different search criteria",
+                icon: "question"
+            });
             return;
-        }        
+        }
 
         const data = await response.json();
 
@@ -406,8 +413,12 @@ async function addTreatment(dni) {
         });
 
         if (!response.ok) {
-            console.error("Error al obtener los datos del paciente. Código de estado: " + response.status);
-            alert("No se pudo obtener los datos del paciente. Intenta de nuevo.");
+            Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: "Something went wrong!",
+            footer: '<a href="#">Why do I have this issue?</a>'
+            });
             return;
         }
 
@@ -418,8 +429,11 @@ async function addTreatment(dni) {
             sessionStorage.setItem("patientData", JSON.stringify(patientData[0]));
         } else {
 
-            console.error("No se recibieron datos del paciente.");
-            alert("No se encontraron datos para el paciente con el DNI proporcionado.");
+            Swal.fire({
+            title: "No patient found",
+            text: "No patient found with the provided NIF",
+            icon: "question"
+            });
             return;
         }
 
@@ -451,8 +465,12 @@ async function searchTreatment(patientId) {
         });
 
         if (!response.ok) {
-            console.error("Error al obtener los datos del paciente. Código de estado: " + response.status);
-            alert("No se pudo obtener los datos del paciente. Intenta de nuevo.");
+            Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: "Something went wrong!",
+            footer: '<a href="#">Why do I have this issue?</a>'
+            });
             return;
         }
 
@@ -463,8 +481,11 @@ async function searchTreatment(patientId) {
             sessionStorage.setItem("patientData", JSON.stringify(patientData[0]));
         } else {
 
-            console.error("No se recibieron datos del paciente.");
-            alert("No se encontraron datos para el paciente con el DNI proporcionado.");
+            Swal.fire({
+                title: "No patient found",
+                text: "No patient found with the provided NIF",
+                icon: "question"
+            });
             return;
         }
 
@@ -530,12 +551,19 @@ async function deletePatient(patientId) {
         });
 
         if (!response.ok) {
-            console.error("Error al eliminar el paciente. Código de estado: " + response.status);
-            alert("No se pudo eliminar el paciente. Intenta de nuevo.");
+            Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: "Something went wrong!",
+                footer: '<a href="#">Why do I have this issue?</a>'
+            });
             return;
         }
 
-        alert("Paciente eliminado correctamente.");
+        Swal.fire({
+            title: "Patient deleted successfully",
+            icon: "success"
+        });
         window.location.href = "privateZone.html";
 
     } catch (error) {
@@ -578,12 +606,18 @@ async function sendForm() {
     })
     .then(response => response.json())
     .then(data => {
-        console.log('Respuesta del servidor:', data);
-        alert("Paciente creado correctamente.");
+        Swal.fire({
+            title: "Patient created successfully",
+            icon: "success"
+        });
     })
     .catch(error => {
-        console.error('Error al enviar los datos:', error);
-        alert("ERROR al crear el paciente!!");
+        Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: "Something went wrong!",
+            footer: '<a href="#">Why do I have this issue?</a>'
+        });
     });
 }
 
