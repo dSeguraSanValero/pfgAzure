@@ -31,6 +31,7 @@ window.onload = async function() {
     }
 
     const generalAssessment = await response.json();
+    console.log("General Assessment Data:", generalAssessment);
 
     document.getElementById("painLevel").value = generalAssessment.painLevel || "";
     document.getElementById("usualPhysicalActivity").value = generalAssessment.usualPhysicalActivity || "";
