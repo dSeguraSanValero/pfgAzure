@@ -16,7 +16,7 @@ window.onload = async function() {
     document.getElementById("treatmentDate").value = treatment.treatmentDate || "";
 
 
-    const response = await fetch(muscularAssessmentUrl, {
+    const response = await fetch(generalAssessmentUrl, {
         method: "GET",
         headers: {
             "Authorization": `Bearer ${token}`,
@@ -25,19 +25,19 @@ window.onload = async function() {
     });
 
     if (!response.ok) {
-        console.error("Error al obtener datos musculares:", response.status);
-        alert("No se pudieron obtener datos musculares.");
+        console.error("Error al obtener datos generales:", response.status);
+        alert("No se pudieron obtener datos generales.");
         return;
     }
-    
-    const muscularAssessment = await response.json();
 
-    document.getElementById("painLevel").value = muscularAssessment.painLevel || "";
-    document.getElementById("usualPhysicalActivity").value = muscularAssessment.usualPhysicalActivity || "";
-    document.getElementById("patientHeight").value = muscularAssessment.patientHeight || "";
-    document.getElementById("patientWeight").value = muscularAssessment.patientWeight || "";
-    document.getElementById("occupation").value = muscularAssessment.occupation || "";
-    document.getElementById("pastMedicalHistory").value = muscularAssessment.pastMedicalHistory || "";
+    const generalAssessment = await response.json();
+
+    document.getElementById("painLevel").value = generalAssessment.painLevel || "";
+    document.getElementById("usualPhysicalActivity").value = generalAssessment.usualPhysicalActivity || "";
+    document.getElementById("patientHeight").value = generalAssessment.patientHeight || "";
+    document.getElementById("patientWeight").value = generalAssessment.patientWeight || "";
+    document.getElementById("occupation").value = generalAssessment.occupation || "";
+    document.getElementById("pastMedicalHistory").value = generalAssessment.pastMedicalHistory || "";
 };
 
 $(document).ready(function(){
