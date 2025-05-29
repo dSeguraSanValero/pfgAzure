@@ -45,7 +45,71 @@ window.onload = async function() {
         console.warn("No general assessment data found.");
     }
 
+    const muscularResponse = await fetch(muscularAssessmentUrl, {
+        method: "GET",
+        headers: {
+            "Authorization": `Bearer ${token}`,
+            "Content-Type": "application/json"
+        }
+    });
+
+    if (!muscularResponse.ok) {
+        console.error("Error al obtener datos musculares:", muscularResponse.status);
+        alert("No se pudieron obtener los datos musculares.");
+        return;
+    }
+
+    const muscleAssessments = await muscularResponse.json();
+    const container = document.getElementById("muscleAssessmentsContainer");
+    container.innerHTML = "";
+
+    muscleAssessments.forEach((assessment, index) => {
+        const card = document.createElement("div");
+        card.className = "muscle-card";
+
+        const prefix = `muscle-${index}`;
+
+        card.innerHTML = `
+            <label>Músculo:
+                <input type="text" id="${prefix}-muscleName" value="${assessment.muscleName || ""}">
+            </label>
+            <br>
+            <label>Fuerza:
+                <input type="number" id="${prefix}-strength" value="${assessment.strength || ""}">
+            </label>
+            <br>
+            <label>Dolor:
+                <input type="number" id="${prefix}-pain" value="${assessment.pain || ""}">
+            </label>
+            <br>
+            <label>Comentario:
+                <textarea id="${prefix}-comment">${assessment.comment || ""}</textarea>
+            </label>
+            <br>
+            <hr>
+        `;
+
+        container.appendChild(card);
+    });
+
 };
+
+function collectEditedMuscleAssessments() {
+    const container = document.getElementById("muscleAssessmentsContainer");
+    const cards = container.querySelectorAll(".muscle-card");
+
+    const editedAssessments = Array.from(cards).map((card, index) => {
+        return {
+            muscleName: card.querySelector(`#muscle-${index}-muscleName`).value,
+            strength: parseInt(card.querySelector(`#muscle-${index}-strength`).value),
+            pain: parseInt(card.querySelector(`#muscle-${index}-pain`).value),
+            comment: card.querySelector(`#muscle-${index}-comment`).value
+        };
+    });
+
+    return editedAssessments;
+}
+
 
 $(document).ready(function(){
   $('#treatmentDate').datepicker({

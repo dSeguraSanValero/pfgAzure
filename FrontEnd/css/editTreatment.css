@@ -16,3 +16,16 @@
 .margin-top {
     margin-top: 10px;
 }
+
+.muscle-card {
+    border: 1px solid #ccc;
+    padding: 15px;
+    margin-bottom: 12px;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+}
+
+.muscle-card label {
+    display: block;
+    margin: 6px 0;
+}
