@@ -13,4 +13,5 @@ window.onload = async function() {
     const generalAssessmentUrl = `https://fisioscan-e6f8ehddembuhch9.westeurope-01.azurewebsites.net/GeneralAssessment?treatmentId=${encodeURIComponent(treatment.treatmentId)}`;
 
     document.getElementById("treatmentCause").value = treatment.treatmentCause || "";
+    document.getElementById("treatmentDate").value = treatment.treatmentDate || "";
 };
