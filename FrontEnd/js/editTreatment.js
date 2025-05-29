@@ -30,15 +30,21 @@ window.onload = async function() {
         return;
     }
 
-    const generalAssessment = await response.json();
-    console.log("General Assessment Data:", generalAssessment);
+    const generalAssessmentArray = await response.json();
 
-    document.getElementById("painLevel").value = generalAssessment.painLevel || "";
-    document.getElementById("usualPhysicalActivity").value = generalAssessment.usualPhysicalActivity || "";
-    document.getElementById("patientHeight").value = generalAssessment.patientHeight || "";
-    document.getElementById("patientWeight").value = generalAssessment.patientWeight || "";
-    document.getElementById("occupation").value = generalAssessment.occupation || "";
-    document.getElementById("pastMedicalHistory").value = generalAssessment.pastMedicalHistory || "";
+    if (generalAssessmentArray.length > 0) {
+        const generalAssessment = generalAssessmentArray[0];
+
+        document.getElementById("painLevel").value = generalAssessment.painLevel || "";
+        document.getElementById("usualPhysicalActivity").value = generalAssessment.usualPhysicalActivity || "";
+        document.getElementById("height").value = generalAssessment.height || "";
+        document.getElementById("weight").value = generalAssessment.weight || "";
+        document.getElementById("occupation").value = generalAssessment.occupation || "";
+        document.getElementById("medicalHistory").value = generalAssessment.medicalHistory || "";
+    } else {
+        console.warn("No general assessment data found.");
+    }
+
 };
 
 $(document).ready(function(){
