@@ -595,13 +595,27 @@ async function deletePatient(patientId) {
         const treatments = await treatmentsResponse.json();
 
         for (const treatment of treatments) {
-            await deleteTreatment(treatment.treatmentId);
+            try {
+                await deleteTreatment(treatment.treatmentId);
+            } catch (error) {
+                console.error(`Error al eliminar el tratamiento con ID ${treatment.treatmentId}:`, error);
+            }
         }
 
         const response = await fetch(`https://fisioscan-e6f8ehddembuhch9.westeurope-01.azurewebsites.net/Patient/${patientId}`, {
             method: "DELETE",
             headers
         });
+
+        if (!response.ok) {
+            console.error("No se pudo eliminar el paciente:", response.status);
+            Swal.fire({
+                icon: "error",
+                title: "No se pudo eliminar el paciente",
+                text: "Verifica si todos los tratamientos fueron eliminados."
+            });
+            return;
+        }
 
         Swal.fire({
             title: "Patient deleted successfully",
@@ -611,8 +625,14 @@ async function deletePatient(patientId) {
 
     } catch (error) {
         console.error("Error en la función deletePatient:", error);
+        Swal.fire({
+            icon: "error",
+            title: "Error inesperado",
+            text: "No se pudo completar la eliminación del paciente."
+        });
     }
 }
+
 
 
 
