@@ -592,12 +592,6 @@ async function deletePatient(patientId) {
             headers
         });
 
-        if (!treatmentsResponse.ok) {
-            console.error("Error al obtener los tratamientos del paciente:", treatmentsResponse.status);
-            alert("No se pudieron obtener los tratamientos del paciente.");
-            return;
-        }
-
         const treatments = await treatmentsResponse.json();
 
         for (const treatment of treatments) {
@@ -609,16 +603,6 @@ async function deletePatient(patientId) {
             headers
         });
 
-        if (!response.ok) {
-            Swal.fire({
-                icon: "error",
-                title: "Oops...",
-                text: "Something went wrong while deleting the patient!",
-                footer: '<a href="#">Why do I have this issue?</a>'
-            });
-            return;
-        }
-
         Swal.fire({
             title: "Patient deleted successfully",
             icon: "success"
@@ -627,7 +611,6 @@ async function deletePatient(patientId) {
 
     } catch (error) {
         console.error("Error en la función deletePatient:", error);
-        alert("Ocurrió un error inesperado al eliminar al paciente.");
     }
 }
 
