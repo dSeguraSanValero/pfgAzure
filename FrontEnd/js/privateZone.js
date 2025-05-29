@@ -699,74 +699,56 @@ async function deleteTreatment(treatmentId) {
     };
 
     try {
-        // Primero obtener todas las evaluaciones musculares asociadas
-        const muscularListResponse = await fetch(
-            `https://fisioscan-e6f8ehddembuhch9.westeurope-01.azurewebsites.net/MuscularAssessment?treatmentId=${encodeURIComponent(treatmentId)}`,
-            {
-                method: "GET",
-                headers
-            }
-        );
 
-        if (!muscularListResponse.ok) {
-            console.error("Error al obtener evaluaciones musculares:", muscularListResponse.status);
-        } else {
-            const muscularAssessments = await muscularListResponse.json();
+        const muscularResponse = await fetch(`https://fisioscan-e6f8ehddembuhch9.westeurope-01.azurewebsites.net/MuscularAssessment?treatmentId=${encodeURIComponent(treatmentId)}`, {
+            method: "DELETE",
+            headers
+        });
 
-            for (const muscular of muscularAssessments) {
-                try {
-                    const deleteResponse = await fetch(
-                        `https://fisioscan-e6f8ehddembuhch9.westeurope-01.azurewebsites.net/MuscularAssessment/${muscular.muscularAssessmentId}`,
-                        {
-                            method: "DELETE",
-                            headers
-                        }
-                    );
-
-                    if (!deleteResponse.ok) {
-                        console.warn(`No se pudo eliminar MuscularAssessment con ID ${muscular.muscularAssessmentId}`);
-                    }
-                } catch (err) {
-                    console.error("Error eliminando evaluación muscular individual:", err);
-                }
-            }
-        }
-
-        // Ahora eliminar la evaluación general
-        const generalResponse = await fetch(
-            `https://fisioscan-e6f8ehddembuhch9.westeurope-01.azurewebsites.net/GeneralAssessment?treatmentId=${encodeURIComponent(treatmentId)}`,
-            {
-                method: "DELETE",
-                headers
-            }
-        );
-
-        if (!generalResponse.ok) {
-            console.error("Error al eliminar la evaluación general:", generalResponse.status);
-            // No alert, solo log para permitir continuar
-        }
-
-        // Finalmente eliminar el tratamiento
-        const treatmentResponse = await fetch(
-            `https://fisioscan-e6f8ehddembuhch9.westeurope-01.azurewebsites.net/Treatment/${treatmentId}`,
-            {
-                method: "DELETE",
-                headers
-            }
-        );
-
-        if (!treatmentResponse.ok) {
-            console.error("Error al eliminar el tratamiento:", treatmentResponse.status);
+        if (!muscularResponse.ok) {
+            console.error("Error al eliminar evaluaciones musculares:", muscularResponse.status);
+            alert("No se pudieron eliminar las evaluaciones musculares.");
             return;
         }
 
-        console.log(`Tratamiento ${treatmentId} y datos asociados eliminados.`);
+
+        const generalResponse = await fetch(`https://fisioscan-e6f8ehddembuhch9.westeurope-01.azurewebsites.net/GeneralAssessment?treatmentId=${encodeURIComponent(treatmentId)}`, {
+            method: "DELETE",
+            headers
+        });
+
+        if (!generalResponse.ok) {
+            console.error("Error al eliminar la evaluación general:", generalResponse.status);
+            alert("No se pudo eliminar la evaluación general.");
+            return;
+        }
+
+
+        const treatmentResponse = await fetch(`https://fisioscan-e6f8ehddembuhch9.westeurope-01.azurewebsites.net/Treatment/${treatmentId}`, {
+            method: "DELETE",
+            headers
+        });
+
+        if (!treatmentResponse.ok) {
+            console.error("Error al eliminar el tratamiento:", treatmentResponse.status);
+            alert("No se pudo eliminar el tratamiento.");
+            return;
+        }
+
+
+        Swal.fire({
+            icon: "success",
+            title: "Treatment deleted successfully"
+        });
+
+
+        window.location.href = "privateZone.html";
 
     } catch (error) {
         console.error("Error en la función deleteTreatment:", error);
+        alert("Ocurrió un error inesperado al eliminar el tratamiento.");
     }
 }
-
 
 
 
