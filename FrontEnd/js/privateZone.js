@@ -596,7 +596,7 @@ async function deletePatient(patientId) {
 
         for (const treatment of treatments) {
             try {
-                await deleteTreatment(treatment.treatmentId);
+                await silentDeleteTreatment(treatment.treatmentId);
             } catch (error) {
                 console.error(`Error al eliminar el tratamiento con ID ${treatment.treatmentId}:`, error);
             }
@@ -749,6 +749,58 @@ async function deleteTreatment(treatmentId) {
         alert("Ocurrió un error inesperado al eliminar el tratamiento.");
     }
 }
+
+
+async function silentDeleteTreatment(treatmentId) {
+    const token = sessionStorage.getItem("jwtToken");
+
+    if (!token) {
+        console.error("Token no encontrado. Redirigiendo a la página de login.");
+        window.location.href = "index.html";
+        return;
+    }
+
+    const headers = {
+        "Authorization": `Bearer ${token}`,
+        "Content-Type": "application/json"
+    };
+
+    try {
+        const muscularResponse = await fetch(`https://fisioscan-e6f8ehddembuhch9.westeurope-01.azurewebsites.net/MuscularAssessment?treatmentId=${encodeURIComponent(treatmentId)}`, {
+            method: "DELETE",
+            headers
+        });
+
+        if (!muscularResponse.ok) {
+            console.error("Error al eliminar evaluaciones musculares:", muscularResponse.status);
+            return;
+        }
+
+        const generalResponse = await fetch(`https://fisioscan-e6f8ehddembuhch9.westeurope-01.azurewebsites.net/GeneralAssessment?treatmentId=${encodeURIComponent(treatmentId)}`, {
+            method: "DELETE",
+            headers
+        });
+
+        if (!generalResponse.ok) {
+            console.error("Error al eliminar la evaluación general:", generalResponse.status);
+            return;
+        }
+
+        const treatmentResponse = await fetch(`https://fisioscan-e6f8ehddembuhch9.westeurope-01.azurewebsites.net/Treatment/${treatmentId}`, {
+            method: "DELETE",
+            headers
+        });
+
+        if (!treatmentResponse.ok) {
+            console.error("Error al eliminar el tratamiento:", treatmentResponse.status);
+            return;
+        }
+
+    } catch (error) {
+        console.error("Error en silentDeleteTreatment:", error);
+    }
+}
+
 
 
 
