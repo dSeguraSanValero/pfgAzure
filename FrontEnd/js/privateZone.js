@@ -601,7 +601,7 @@ async function deletePatient(patientId) {
         const treatments = await treatmentsResponse.json();
 
         for (const treatment of treatments) {
-            await deleteTreatment(treatment.id);
+            await deleteTreatment(treatment.treatmentId);
         }
 
         const response = await fetch(`https://fisioscan-e6f8ehddembuhch9.westeurope-01.azurewebsites.net/Patient/${patientId}`, {
