@@ -45,43 +45,54 @@
         </div>
       </div>
 
-      <!-- Accordion Item 2 -->
       <div class="accordion-item">
         <h2 class="accordion-header" id="headingTwo">
           <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo">
-            Formulario 2
+            General Assessment
           </button>
         </h2>
         <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
           <div class="accordion-body">
-            <!-- Copia del formulario 1 -->
-            <!-- Solo cambia IDs para que no haya conflictos -->
             <div class="card align-items-center card-style patient-form">
               <form id="registerPhysioForm2" style="background-color: #e6f0fa; padding: 20px; border-radius: 10px;">
-                <div class="title"><strong>Edit your profile</strong></div>
+                <div class="title"><strong>General Assessment Data</strong></div>
                 <div class="row">
                   <div class="col-md-6 mb-4">
                     <div class="form-outline">
-                      <input type="text" id="patientName2" name="name" class="form-control margin-top" required />
-                      <label class="form-label" for="patientName2">Name</label>
+                      <input type="number" id="painLevel" name="painLevel" class="form-control margin-top" required />
+                      <label class="form-label" for="painLevel">Pain Level</label>
                     </div>
                   </div>
                   <div class="col-md-6 mb-4">
                     <div class="form-outline">
-                      <input type="text" id="patientFirstSurname2" name="FirstSurname" class="form-control margin-top" required />
-                      <label class="form-label" for="patientFirstSurname2">First Surname</label>
+                      <input type="text" id="usualPhysicalActivity" name="usualPhysicalActivity" class="form-control margin-top" required />
+                      <label class="form-label" for="usualPhysicalActivity">Usual Physical Activity</label>
                     </div>
                   </div>
                   <div class="col-md-6 mb-4">
                     <div class="form-outline">
-                      <input type="text" id="patientSecondSurname2" name="SecondSurname" class="form-control" required />
-                      <label class="form-label" for="patientSecondSurname2">Second Surname</label>
+                      <input type="text" id="patientHeight" name="patientHeight" class="form-control" required />
+                      <label class="form-label" for="patientHeight">Patient Height</label>
                     </div>
                   </div>
-                </div>
-                <div class="w-50 mx-auto form-outline mb-4">
-                  <input type="text" id="patientNif2" name="dni" class="form-control" required />
-                  <label class="form-label" for="patientNif2">NIF</label>
+                  <div class="col-md-6 mb-4">
+                    <div class="form-outline">
+                      <input type="text" id="patientWeight" name="patientWeight" class="form-control" required />
+                      <label class="form-label" for="patientWeight">Patient Weight</label>
+                    </div>
+                  </div>
+                  <div class="col-md-6 mb-4">
+                    <div class="form-outline">
+                      <input type="text" id="occupation" name="occupation" class="form-control margin-top" required />
+                      <label class="form-label" for="occupation">Occupation</label>
+                    </div>
+                  </div>
+                  <div class="col-md-6 mb-4">
+                    <div class="form-outline">
+                      <input type="text" id="pastMedicalHistory" name="pastMedicalHistory" class="form-control" required />
+                      <label class="form-label" for="pastMedicalHistory">Past medical history</label>
+                    </div>
+                  </div>
                 </div>
                 <button type="button" class="btn btn-success btn-block mb-4">Save</button>
                 <button type="button" onclick="window.location.href='./privateZone.html'" class="btn btn-danger btn-block mb-4">Cancel</button>
