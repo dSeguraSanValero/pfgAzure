@@ -44,7 +44,7 @@ namespace FisioScan.API.Controllers
                         p.PatientId,
                         p.CreatedBy,
                         p.TreatmentCause,
-                        TreatmentDate = p.TreatmentDate.ToString("yyyy-MM-dd")
+                        TreatmentDate = p.TreatmentDate.ToString("MM-dd-yyyy")
                     }).ToList();
 
                     return Ok(transformedTreatments);
@@ -66,7 +66,7 @@ namespace FisioScan.API.Controllers
                         p.PatientId,
                         p.CreatedBy,
                         p.TreatmentCause,
-                        TreatmentDate = p.TreatmentDate.ToString("yyyy-MM-dd")
+                        TreatmentDate = p.TreatmentDate.ToString("MM-dd-yyyy")
                     }).ToList();
 
                     return Ok(transformedTreatments);

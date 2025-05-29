@@ -15,3 +15,11 @@ window.onload = async function() {
     document.getElementById("treatmentCause").value = treatment.treatmentCause || "";
     document.getElementById("treatmentDate").value = treatment.treatmentDate || "";
 };
+
+$(document).ready(function(){
+  $('#treatmentDate').datepicker({
+    format: 'mm-dd-yyyy',
+    autoclose: true,
+    todayHighlight: true
+  });
+});
