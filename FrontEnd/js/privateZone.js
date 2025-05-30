@@ -322,7 +322,7 @@ async function fetchTreatments(patientId) {
                 text: "Please, create a new treatment, or enter a different search criteria",
                 icon: "question"
             });
-            return;
+            window.location.href = "privateZone.html";
         }
 
         const data = await response.json();
