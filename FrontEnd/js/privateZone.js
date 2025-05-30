@@ -587,12 +587,21 @@ async function deletePatient(patientId) {
     };
 
     try {
-        const treatmentsResponse = await fetch(`https://fisioscan-e6f8ehddembuhch9.westeurope-01.azurewebsites.net/Treatment?patientId=${patientId}`, {
-            method: "GET",
-            headers
-        });
+        const treatmentsResponse = await fetch(
+            `https://fisioscan-e6f8ehddembuhch9.westeurope-01.azurewebsites.net/Treatment?patientId=${patientId}`,
+            {
+                method: "GET",
+                headers
+            }
+        );
 
-        const treatments = await treatmentsResponse.json();
+        let treatments = [];
+
+        if (treatmentsResponse.ok && treatmentsResponse.headers.get("content-type")?.includes("application/json")) {
+            treatments = await treatmentsResponse.json();
+        } else {
+            console.warn("No se encontraron tratamientos o la respuesta no es JSON. Continuando con la eliminación.");
+        }
 
         for (const treatment of treatments) {
             try {
@@ -602,10 +611,13 @@ async function deletePatient(patientId) {
             }
         }
 
-        const response = await fetch(`https://fisioscan-e6f8ehddembuhch9.westeurope-01.azurewebsites.net/Patient/${patientId}`, {
-            method: "DELETE",
-            headers
-        });
+        const response = await fetch(
+            `https://fisioscan-e6f8ehddembuhch9.westeurope-01.azurewebsites.net/Patient/${patientId}`,
+            {
+                method: "DELETE",
+                headers
+            }
+        );
 
         if (!response.ok) {
             console.error("No se pudo eliminar el paciente:", response.status);
@@ -632,6 +644,7 @@ async function deletePatient(patientId) {
         });
     }
 }
+
 
 
 async function sendForm() {
