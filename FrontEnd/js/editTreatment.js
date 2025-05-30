@@ -73,6 +73,7 @@ window.onload = async function() {
     muscleAssessments.forEach((assessment, index) => {
         const card = document.createElement("div");
         card.className = "muscle-card";
+        card.dataset.id = assessment.muscularAssessmentId; // <--- Guardamos el ID
 
         const prefix = `muscle-${index}`;
 
@@ -90,6 +91,7 @@ window.onload = async function() {
 
         container.appendChild(card);
     });
+
 
 };
 
@@ -171,6 +173,46 @@ async function saveGeneralAssessmentDetails() {
         console.error("Error al editar los datos del tratamiento:", error);
     }
 }
+
+
+async function saveMuscleAssessments() {
+    const token = sessionStorage.getItem("jwtToken");
+    const container = document.getElementById("muscleAssessmentsContainer");
+    const cards = container.querySelectorAll(".muscle-card");
+
+    for (let i = 0; i < cards.length; i++) {
+        const card = cards[i];
+        const muscleName = document.getElementById(`muscle-${i}-muscleName`).value;
+        const muscleAssessment = document.getElementById(`muscle-${i}-muscleAssessment`).value;
+        const muscularAssessmentId = card.dataset.id;
+
+        const assessmentData = {
+            muscularAssessmentId: muscularAssessmentId,
+            treatmentId: treatmentId,
+            muscleName: muscleName,
+            muscleAssessment: muscleAssessment
+        };
+
+        const response = await fetch(`https://fisioscan-e6f8ehddembuhch9.westeurope-01.azurewebsites.net/MuscularAssessment/${muscularAssessmentId}`, {
+            method: "PUT",
+            headers: {
+                "Authorization": `Bearer ${token}`,
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(assessmentData)
+        });
+
+        if (!response.ok) {
+            console.error(`Error al actualizar la evaluación muscular con ID ${muscularAssessmentId}:`, response.status);
+        }
+    }
+
+    Swal.fire({
+        title: "Muscle Assessments Updated",
+        icon: "success"
+    });
+}
+
 
 
 $(document).ready(function(){
