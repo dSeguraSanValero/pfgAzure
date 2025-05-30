@@ -1,3 +1,5 @@
+let treatmentId = null;
+
 window.onload = async function() {
     const token = sessionStorage.getItem("jwtToken");
 
@@ -8,6 +10,8 @@ window.onload = async function() {
 
     const treatmentData = sessionStorage.getItem("thisTreatment");
     const treatment = JSON.parse(treatmentData);
+
+    treatmentId = treatment.treatmentId;
 
     const muscularAssessmentUrl = `https://fisioscan-e6f8ehddembuhch9.westeurope-01.azurewebsites.net/MuscularAssessment?treatmentId=${encodeURIComponent(treatment.treatmentId)}`;
     const generalAssessmentUrl = `https://fisioscan-e6f8ehddembuhch9.westeurope-01.azurewebsites.net/GeneralAssessment?treatmentId=${encodeURIComponent(treatment.treatmentId)}`;
@@ -85,6 +89,43 @@ window.onload = async function() {
     });
 
 };
+
+async function editTreatmentData() {
+    const token = sessionStorage.getItem("jwtToken");
+
+    if (!treatmentId) {
+        console.error("No se ha cargado el ID del tratamiento.");
+        return;
+    }
+
+    try {
+        const response = await fetch(`https://fisioscan-e6f8ehddembuhch9.westeurope-01.azurewebsites.net/Treatment/${treatmentId}`, {
+            method: "PUT",
+            headers: {
+                "Authorization": `Bearer ${token}`,
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                treatmentId: treatmentId,
+                treatmentCause: document.getElementById("treatmentCause").value,
+                treatmentDate: document.getElementById("treatmentDate").value
+            })
+        });
+
+        if (!response.ok) {
+            console.error("Error al editar los datos del tratamiento. Código de estado: " + response.status);
+            return;
+        }
+
+        Swal.fire({
+            title: "Treatment Updated",
+            icon: "success"
+        });
+
+    } catch (error) {
+        console.error("Error al editar los datos del tratamiento:", error);
+    }
+}
 
 
 $(document).ready(function(){
