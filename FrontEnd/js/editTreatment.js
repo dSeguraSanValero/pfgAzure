@@ -90,7 +90,7 @@ window.onload = async function() {
 
 };
 
-async function editTreatmentData() {
+async function saveTreatmentDetails() {
     const token = sessionStorage.getItem("jwtToken");
 
     if (!treatmentId) {
