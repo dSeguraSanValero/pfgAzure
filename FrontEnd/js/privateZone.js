@@ -853,3 +853,28 @@ $(document).ready(function () {
     todayHighlight: true
   });
 });
+
+
+function limpiarInputs() {
+  const inputs = document.querySelectorAll('input');
+  const textareas = document.querySelectorAll('textarea');
+  const selects = document.querySelectorAll('select');
+
+  inputs.forEach(input => {
+    if (input.type !== 'button' && input.type !== 'submit' && input.type !== 'reset') {
+      input.value = '';
+      if (input.type === 'checkbox' || input.type === 'radio') {
+        input.checked = false;
+      }
+    }
+  });
+
+  textareas.forEach(textarea => {
+    textarea.value = '';
+  });
+
+  selects.forEach(select => {
+    select.selectedIndex = 0;
+  });
+}
+
