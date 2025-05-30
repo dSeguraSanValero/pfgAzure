@@ -86,22 +86,6 @@ window.onload = async function() {
 
 };
 
-function collectEditedMuscleAssessments() {
-    const container = document.getElementById("muscleAssessmentsContainer");
-    const cards = container.querySelectorAll(".muscle-card");
-
-    const editedAssessments = Array.from(cards).map((card, index) => {
-        return {
-            muscleName: card.querySelector(`#muscle-${index}-muscleName`).value,
-            strength: parseInt(card.querySelector(`#muscle-${index}-strength`).value),
-            pain: parseInt(card.querySelector(`#muscle-${index}-pain`).value),
-            comment: card.querySelector(`#muscle-${index}-comment`).value
-        };
-    });
-
-    return editedAssessments;
-}
-
 
 $(document).ready(function(){
   $('#treatmentDate').datepicker({
