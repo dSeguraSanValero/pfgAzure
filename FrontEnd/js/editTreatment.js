@@ -75,7 +75,7 @@ window.onload = async function() {
             </label>
             <br>
             <label>Muscle Assessment:
-                <input type="number" id="${prefix}-muscleAssessment" value="${assessment.muscleAssessment || ""}">
+                <input type="text" id="${prefix}-muscleAssessment" value="${assessment.muscleAssessment || ""}">
             </label>
             <br>
             <hr>
