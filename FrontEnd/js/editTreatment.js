@@ -175,7 +175,7 @@ async function saveGeneralAssessmentDetails() {
 }
 
 
-async function saveMuscleAssessments() {
+async function saveMuscularAssessmentDetails() {
     const token = sessionStorage.getItem("jwtToken");
     const container = document.getElementById("muscleAssessmentsContainer");
     const cards = container.querySelectorAll(".muscle-card");
