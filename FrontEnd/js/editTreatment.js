@@ -74,16 +74,8 @@ window.onload = async function() {
                 <input type="text" id="${prefix}-muscleName" value="${assessment.muscleName || ""}">
             </label>
             <br>
-            <label>Fuerza:
-                <input type="number" id="${prefix}-strength" value="${assessment.strength || ""}">
-            </label>
-            <br>
-            <label>Dolor:
-                <input type="number" id="${prefix}-pain" value="${assessment.pain || ""}">
-            </label>
-            <br>
-            <label>Comentario:
-                <textarea id="${prefix}-comment">${assessment.comment || ""}</textarea>
+            <label>Muscle Assessment:
+                <input type="number" id="${prefix}-muscleAssessment" value="${assessment.muscleAssessment || ""}">
             </label>
             <br>
             <hr>
