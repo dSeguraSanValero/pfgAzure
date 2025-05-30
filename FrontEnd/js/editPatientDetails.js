@@ -42,7 +42,7 @@ async function editPatientData() {
                 "Content-Type": "application/json"
             },
             body: JSON.stringify({
-                physioId: physioId,
+                patientId: patientId,
                 name: document.getElementById("patientName").value,
                 firstSurname: document.getElementById("patientFirstSurname").value,
                 secondSurname: document.getElementById("patientSecondSurname").value,
