@@ -321,9 +321,11 @@ async function fetchTreatments(patientId) {
                 title: "No treatments found",
                 text: "Please, create a new treatment, or enter a different search criteria",
                 icon: "question"
+            }).then(() => {
+                window.location.href = "privateZone.html";
             });
-            window.location.href = "privateZone.html";
         }
+
 
         const data = await response.json();
 
