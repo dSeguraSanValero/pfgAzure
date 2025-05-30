@@ -1,4 +1,5 @@
 let treatmentId = null;
+let generalAssessmentId = null;
 
 window.onload = async function() {
     const token = sessionStorage.getItem("jwtToken");
@@ -38,6 +39,8 @@ window.onload = async function() {
 
     if (generalAssessmentArray.length > 0) {
         const generalAssessment = generalAssessmentArray[0];
+
+        generalAssessmentId = generalAssessment.generalAssessmentId;
 
         document.getElementById("painLevel").value = generalAssessment.painLevel || "";
         document.getElementById("usualPhysicalActivity").value = generalAssessment.usualPhysicalActivity || "";
@@ -119,6 +122,48 @@ async function saveTreatmentDetails() {
 
         Swal.fire({
             title: "Treatment Updated",
+            icon: "success"
+        });
+
+    } catch (error) {
+        console.error("Error al editar los datos del tratamiento:", error);
+    }
+}
+
+
+async function saveGeneralAssessmentDetails() {
+    const token = sessionStorage.getItem("jwtToken");
+
+    if (!generalAssessmentId) {
+        console.error("No se ha cargado el ID de la evaluación general.");
+        return;
+    }
+
+    try {
+        const response = await fetch(`https://fisioscan-e6f8ehddembuhch9.westeurope-01.azurewebsites.net/GeneralAssessment/${generalAssessmentId}`, {
+            method: "PUT",
+            headers: {
+                "Authorization": `Bearer ${token}`,
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                generalAssessmentId: generalAssessmentId,
+                painLevel: document.getElementById("painLevel").value,
+                usualPhysicalActivity: document.getElementById("usualPhysicalActivity").value,
+                height: document.getElementById("height").value,
+                weight: document.getElementById("weight").value,
+                occupation: document.getElementById("occupation").value,
+                medicalHistory: document.getElementById("medicalHistory").value
+            })
+        });
+
+        if (!response.ok) {
+            console.error("Error al editar los datos del tratamiento. Código de estado: " + response.status);
+            return;
+        }
+
+        Swal.fire({
+            title: "General Assessment Updated",
             icon: "success"
         });
 
