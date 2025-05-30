@@ -52,7 +52,10 @@ async function registerPhysio() {
       });
 
       if (response.ok) {
-          alert('Registro exitoso');
+          Swal.fire({
+                title: "Your registration was successful",
+                icon: "success"
+          });
           document.getElementById('registerPhysioForm').reset();
       } else {
           const errorData = await response.json();
