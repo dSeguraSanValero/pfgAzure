@@ -187,7 +187,7 @@ async function fetchPatients(text) {
                 const thead = document.createElement('thead');
                 thead.innerHTML = `
                     <tr>
-                        <th>#</th>
+                        <th></th>
                         <th>Name</th>
                         <th>First Surname</th>
                         <th>Second Surname</th>
@@ -345,10 +345,10 @@ async function fetchTreatments(patientId) {
                 const thead = document.createElement('thead');
                 thead.innerHTML = `
                     <tr>
-                        <th>#</th>
+                        <th></th>
                         <th>Treatment Cause</th>
                         <th>Treatment Date</th>
-                        <th>Select</th>
+                        <th>Display Treatment</th>
                         <th>Edit/Delete</th>
                     </tr>
                 `;

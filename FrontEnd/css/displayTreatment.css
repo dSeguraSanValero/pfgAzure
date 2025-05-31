@@ -12,6 +12,10 @@
     display: flex;
 }
 
+.my-margin {
+    margin: 15vh 15vh 5vh 15vh;
+}
+
 .card-style {
     text-align: center;
     width: 100vh !important;
