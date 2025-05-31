@@ -648,22 +648,30 @@ async function deletePatient(patientId) {
 }
 
 
-
 async function sendForm() {
-
     const token = sessionStorage.getItem("jwtToken");
-        
+
     if (!token) {
         console.error("Token no encontrado. Redirigiendo a la página de login.");
         window.location.href = "index.html";
         return;
     }
-    
+
     const name = document.querySelector('input[placeholder="Form Name"]').value;
     const firstSurname = document.querySelector('input[placeholder="Form First Surname"]').value;
     const secondSurname = document.querySelector('input[placeholder="Form Second Surname"]').value;
     const nif = document.querySelector('input[placeholder="Form NIF"]').value;
     const birthDate = document.getElementById("birthDate").value;
+
+    const nifRegex = /^\d{8}$/;
+    if (!nifRegex.test(nif)) {
+        Swal.fire({
+            icon: "warning",
+            title: "Invalid NIF",
+            text: "The NIF must contain exactly 8 numeric digits."
+        });
+        return;
+    }
 
     const patientData = {
         name: name,
@@ -676,8 +684,8 @@ async function sendForm() {
     fetch('https://fisioscan-e6f8ehddembuhch9.westeurope-01.azurewebsites.net/Patient', {
         method: 'POST',
         headers: {
-        "Authorization": `Bearer ${token}`,
-        'Content-Type': 'application/json'
+            "Authorization": `Bearer ${token}`,
+            'Content-Type': 'application/json'
         },
         body: JSON.stringify(patientData)
     })
@@ -697,6 +705,7 @@ async function sendForm() {
         });
     });
 }
+
 
 
 async function deleteTreatment(treatmentId) {
