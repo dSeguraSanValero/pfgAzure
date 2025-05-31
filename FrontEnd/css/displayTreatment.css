@@ -13,7 +13,7 @@
 }
 
 .my-margin {
-    margin: 15vh 15vh 5vh 15vh;
+    margin: 15vh 15vh 5vh 15vh !important;
 }
 
 .card-style {
