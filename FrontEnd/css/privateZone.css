@@ -11,6 +11,15 @@
     width: 100%;
 }
 
+.title {
+    color: rgb(255, 255, 255);
+    text-shadow: 2px 2px 0 rgb(0, 0, 0);
+}
+
+.title-yellow {
+    color: rgb(255, 255, 218);
+}
+
 .welcome-message {
     margin: 3vh;
     font-size: 5vh;

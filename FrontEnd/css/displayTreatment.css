@@ -55,6 +55,10 @@
     text-align: justify;
 }
 
+.my-btn {
+    margin: 2vh;
+}
+
 #loading-screen {
     position: fixed;
     top: 0;

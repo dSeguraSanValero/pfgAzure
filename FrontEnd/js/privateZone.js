@@ -349,6 +349,7 @@ async function fetchTreatments(patientId) {
                         <th>Treatment Cause</th>
                         <th>Treatment Date</th>
                         <th>Select</th>
+                        <th>Edit/Delete</th>
                     </tr>
                 `;
                 table.appendChild(thead);
