@@ -36,3 +36,8 @@
 .margin-top {
     margin-top: 10vh;
 }
+
+.logo {
+    max-height: 15vh; 
+    float: right;
+}
