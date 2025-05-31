@@ -92,7 +92,7 @@ window.onload = async function() {
         container.appendChild(card);
     });
 
-
+    document.getElementById("loading-screen").classList.add("hidden");
 };
 
 async function saveTreatmentDetails() {

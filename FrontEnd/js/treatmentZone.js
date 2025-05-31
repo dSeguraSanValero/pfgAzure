@@ -22,6 +22,7 @@ window.onload = function() {
 
     showSection('date-card');
 
+    document.getElementById("loading-screen").classList.add("hidden");
 };
 
 const slider = document.getElementById('slider');

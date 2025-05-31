@@ -23,6 +23,8 @@ window.onload = function () {
     document.getElementById("patientSecondSurname").value = patient.secondSurname || "";
     document.getElementById("patientNif").value = patient.dni || "";
     document.getElementById("birthDate").value = patient.birthDate || "";
+
+    document.getElementById("loading-screen").classList.add("hidden");
 };
 
 

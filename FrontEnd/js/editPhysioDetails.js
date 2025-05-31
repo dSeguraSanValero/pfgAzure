@@ -9,6 +9,8 @@ window.onload = function () {
     }
 
     getPhysioData(token);
+
+    document.getElementById("loading-screen").classList.add("hidden");
 };
 
 async function getPhysioData(token) {

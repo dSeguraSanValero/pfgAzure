@@ -24,6 +24,8 @@ window.onload = function() {
     }, 300);
     
     getPhysioName(token);
+
+    document.getElementById("loading-screen").classList.add("hidden");
 };
 
 
