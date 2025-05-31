@@ -1,6 +1,8 @@
 window.onload = async function() {
     showSpinner();
 
+    await new Promise(resolve => setTimeout(resolve, 500));
+
     const token = sessionStorage.getItem("jwtToken");
 
     if (!token) {
