@@ -348,7 +348,7 @@ async function fetchTreatments(patientId) {
                         <th></th>
                         <th>Treatment Cause</th>
                         <th>Treatment Date</th>
-                        <th>Display Treatment</th>
+                        <th>Display</th>
                         <th>Edit/Delete</th>
                     </tr>
                 `;
