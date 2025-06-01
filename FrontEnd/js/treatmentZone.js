@@ -283,12 +283,7 @@ function createMuscleAssessments() {
         }
     });
 
-    Swal.fire({
-        title: "Treatment createdsuccessfully",
-        icon: "success"
-    });
-
-    window.location.href = "privateZone.html";
+    console.log("Success");
 }
 
 
