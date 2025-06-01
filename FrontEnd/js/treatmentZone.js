@@ -1,5 +1,3 @@
-const { shallowReadonly } = require("vue");
-
 window.onload = function() {
     const token = sessionStorage.getItem("jwtToken");
     
