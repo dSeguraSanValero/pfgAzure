@@ -133,6 +133,13 @@ async function loginPhysio(email, password) {
         console.error("Error durante el login:", error);
     }
 }
+
+function togglePasswordVisibility() {
+    const passwordInput = document.getElementById("password");
+    const type = passwordInput.getAttribute("type");
+
+    passwordInput.setAttribute("type", type === "password" ? "text" : "password");
+}
   
 
 

@@ -108,9 +108,16 @@
                           <label class="form-label" for="email">Email address</label>
                       </div>
               
-                      <div data-mdb-input-init class="form-outline mb-4">
-                          <input type="password" id="password" name="password" class="form-control" required />
+                      <div class="w-50 mx-auto form-outline mb-4 position-relative">
+                          <input type="password" id="password" name="password" class="form-control pe-5" required />
                           <label class="form-label" for="password">Password</label>
+                          <button
+                              type="button"
+                              class="btn btn-outline-secondary show-password-btn"
+                              onclick="togglePasswordVisibility()"
+                          >
+                              👁️
+                          </button>
                       </div>
               
                       <button type="button" onclick="registerPhysio()" class="btn btn-primary btn-block mb-4">
