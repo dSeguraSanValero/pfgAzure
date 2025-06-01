@@ -136,23 +136,31 @@ async function createTreatment() {
             throw new Error(`Error ${response.status}: ${errorText}`);
         }
 
-        let data;
+        const data = contentType && contentType.includes("application/json")
+            ? await response.json()
+            : await response.text();
 
-        if (contentType && contentType.includes("application/json")) {
-            data = await response.json();
-            console.log('Respuesta del servidor:', data);
-        } else {
-            const text = await response.text();
-            console.log('Respuesta sin JSON:', text);
-            return;
-        }
+        console.log("Respuesta del servidor:", data);
 
-        sessionStorage.setItem("treatmentResponse", JSON.stringify(data));
+        const getResponse = await fetch(`https://fisioscan-e6f8ehddembuhch9.westeurope-01.azurewebsites.net/Treatment/ByPatient/${patientId}`, {
+            headers: {
+                "Authorization": `Bearer ${token}`,
+            }
+        });
+
+        const treatments = await getResponse.json();
+
+        const latestTreatment = treatments[treatments.length - 1];
+
+        console.log("Último tratamiento recuperado:", latestTreatment);
+
+        sessionStorage.setItem("treatmentResponse", JSON.stringify(latestTreatment));
 
     } catch (error) {
         console.error("Error en createTreatment:", error.message);
     }
 }
+
 
 
 
