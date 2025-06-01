@@ -121,15 +121,16 @@ async function createTreatment() {
         treatmentDate: formattedDate,
     };
 
-    fetch('https://fisioscan-e6f8ehddembuhch9.westeurope-01.azurewebsites.net/Treatment', {
-        method: 'POST',
-        headers: {
-            "Authorization": `Bearer ${token}`,
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(treatmentData)
-    })
-    .then(async response => {
+    try {
+        const response = await fetch('https://fisioscan-e6f8ehddembuhch9.westeurope-01.azurewebsites.net/Treatment', {
+            method: 'POST',
+            headers: {
+                "Authorization": `Bearer ${token}`,
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(treatmentData)
+        });
+
         const contentType = response.headers.get("Content-Type");
 
         if (!response.ok) {
@@ -137,17 +138,24 @@ async function createTreatment() {
             throw new Error(`Error ${response.status}: ${errorText}`);
         }
 
+        let data;
+
         if (contentType && contentType.includes("application/json")) {
-            const data = await response.json();
+            data = await response.json();
             console.log('Respuesta del servidor:', data);
         } else {
             const text = await response.text();
             console.log('Respuesta sin JSON:', text);
+            return;
         }
 
-        await storageTreatment();
-    });
+        sessionStorage.setItem("treatmentResponse", JSON.stringify(data));
+
+    } catch (error) {
+        console.error("Error en createTreatment:", error.message);
+    }
 }
+
 
 
 
@@ -442,11 +450,11 @@ function updateFormattedDate() {
 }
 
 async function createFullTreatment() {
-    createTreatment();
+    await createTreatment();
 
-    createGeneralAssessment();
+    await createGeneralAssessment();
 
-    createMuscleAssessments();
+    await createMuscleAssessments();
 }
 
 
