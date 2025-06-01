@@ -73,7 +73,7 @@ window.onload = async function() {
     muscleAssessments.forEach((assessment, index) => {
         const card = document.createElement("div");
         card.className = "muscle-card";
-        card.dataset.id = assessment.muscularAssessmentId; // <--- Guardamos el ID
+        card.dataset.id = assessment.muscularAssessmentId;
 
         const prefix = `muscle-${index}`;
 
