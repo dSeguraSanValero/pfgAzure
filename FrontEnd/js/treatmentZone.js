@@ -142,7 +142,7 @@ async function createTreatment() {
 
         console.log("Respuesta del servidor:", data);
 
-        const getResponse = await fetch(`https://fisioscan-e6f8ehddembuhch9.westeurope-01.azurewebsites.net/Treatment/ByPatient/${patientId}`, {
+        const getResponse = await fetch(`https://fisioscan-e6f8ehddembuhch9.westeurope-01.azurewebsites.net/Treatment?patientId=${patientId}`, {
             headers: {
                 "Authorization": `Bearer ${token}`,
             }
