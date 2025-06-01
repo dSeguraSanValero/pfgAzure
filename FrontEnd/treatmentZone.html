@@ -32,7 +32,7 @@
                     <input class="form-control form-control-sm" type="text" id="treatmentCause" required>
                 </div>
 
-                <button type="button" class="btn btn-success" onclick="createTreatment(); showSection('general-assessment')">Next</button>
+                <button type="button" class="btn btn-success" onclick="showSection('general-assessment')">Next</button>
             </div>
         </div>
 
@@ -63,7 +63,7 @@
                 </div>
 
                 <button type="button" class="btn btn-secondary" onclick="showSection('cause-card')">Go back</button>
-                <button type="button" class="btn btn-success" onclick="showSection('muscles-container'); createGeneralAssessment();">Next</button>
+                <button type="button" class="btn btn-success" onclick="showSection('muscles-container')">Next</button>
             </div>
         </div>
 
@@ -277,7 +277,7 @@
                 </svg>
             </div>
 
-            <button type="button" class="btn btn-success" onclick="createMuscleAssessments()">Next</button>
+            <button type="button" class="btn btn-success" onclick="createTreatment(); createGeneralAssessment(); createMuscleAssessments()">Next</button>
 
         </div>
 
