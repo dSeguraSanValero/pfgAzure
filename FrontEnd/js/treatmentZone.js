@@ -1,3 +1,5 @@
+const { shallowReadonly } = require("vue");
+
 window.onload = function() {
     const token = sessionStorage.getItem("jwtToken");
     
@@ -119,16 +121,15 @@ async function createTreatment() {
         treatmentDate: formattedDate,
     };
 
-    try {
-        const response = await fetch('https://fisioscan-e6f8ehddembuhch9.westeurope-01.azurewebsites.net/Treatment', {
-            method: 'POST',
-            headers: {
-                "Authorization": `Bearer ${token}`,
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(treatmentData)
-        });
-
+    fetch('https://fisioscan-e6f8ehddembuhch9.westeurope-01.azurewebsites.net/Treatment', {
+        method: 'POST',
+        headers: {
+            "Authorization": `Bearer ${token}`,
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(treatmentData)
+    })
+    .then(async response => {
         const contentType = response.headers.get("Content-Type");
 
         if (!response.ok) {
@@ -136,32 +137,17 @@ async function createTreatment() {
             throw new Error(`Error ${response.status}: ${errorText}`);
         }
 
-        const data = contentType && contentType.includes("application/json")
-            ? await response.json()
-            : await response.text();
+        if (contentType && contentType.includes("application/json")) {
+            const data = await response.json();
+            console.log('Respuesta del servidor:', data);
+        } else {
+            const text = await response.text();
+            console.log('Respuesta sin JSON:', text);
+        }
 
-        console.log("Respuesta del servidor:", data);
-
-        const getResponse = await fetch(`https://fisioscan-e6f8ehddembuhch9.westeurope-01.azurewebsites.net/Treatment?patientId=${patientId}`, {
-            headers: {
-                "Authorization": `Bearer ${token}`,
-            }
-        });
-
-        const treatments = await getResponse.json();
-
-        const latestTreatment = treatments[treatments.length - 1];
-
-        console.log("Último tratamiento recuperado:", latestTreatment);
-
-        sessionStorage.setItem("treatmentResponse", JSON.stringify(latestTreatment));
-
-    } catch (error) {
-        console.error("Error en createTreatment:", error.message);
-    }
+        await storageTreatment();
+    });
 }
-
-
 
 
 
@@ -181,14 +167,10 @@ function createGeneralAssessment() {
 
     const treatment = JSON.parse(treatmentData);
 
+    console.log("Tratamiento recuperado:", treatment);
+    console.log("treatmentId:", treatment.treatmentId);
 
-    const thisTreatmentId = Array.isArray(treatment) ? treatment[0]?.treatmentId : treatment?.treatmentId;
-
-    if (!thisTreatmentId) {
-        console.error("No se pudo obtener treatmentId:", treatment);
-        return;
-    }
-
+    const thisTreatmentId = treatment[0].treatmentId;
 
     console.log("thisTreatmentId:", thisTreatmentId);
 
@@ -253,12 +235,7 @@ function createMuscleAssessments() {
     }
 
     const treatment = JSON.parse(treatmentData);
-    const thisTreatmentId = treatment.treatmentId;
-
-    if (!thisTreatmentId) {
-        console.error("No se pudo obtener treatmentId:", treatment);
-        return;
-    }
+    const thisTreatmentId = treatment[0].treatmentId;
 
     const muscleBlocks = document.querySelectorAll('.inputs-container .text-input');
 
@@ -309,9 +286,11 @@ function createMuscleAssessments() {
     });
 
     Swal.fire({
-        title: "Treatment created successfully",
+        title: "Treatment createdsuccessfully",
         icon: "success"
     });
+
+    window.location.href = "privateZone.html";
 }
 
 
@@ -368,7 +347,7 @@ async function storageTreatment() {
     .catch(error => {
         console.error('Error al enviar los datos:', error.message);
     });
-} 
+}
 
 
 
@@ -460,16 +439,6 @@ function updateFormattedDate() {
     } else {
         preview.textContent = "None";
     }
-}
-
-async function createFullTreatment() {
-    await createTreatment();
-
-    await createGeneralAssessment();
-
-    await createMuscleAssessments();
-
-    window.location.href = "privateZone.html";
 }
 
 
