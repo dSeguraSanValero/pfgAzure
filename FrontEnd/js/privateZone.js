@@ -732,23 +732,11 @@ async function deleteTreatment(treatmentId) {
             headers
         });
 
-        if (!muscularResponse.ok) {
-            console.error("Error al eliminar evaluaciones musculares:", muscularResponse.status);
-            alert("No se pudieron eliminar las evaluaciones musculares.");
-            return;
-        }
-
 
         const generalResponse = await fetch(`https://fisioscan-e6f8ehddembuhch9.westeurope-01.azurewebsites.net/GeneralAssessment?treatmentId=${encodeURIComponent(treatmentId)}`, {
             method: "DELETE",
             headers
         });
-
-        if (!generalResponse.ok) {
-            console.error("Error al eliminar la evaluación general:", generalResponse.status);
-            alert("No se pudo eliminar la evaluación general.");
-            return;
-        }
 
 
         const treatmentResponse = await fetch(`https://fisioscan-e6f8ehddembuhch9.westeurope-01.azurewebsites.net/Treatment/${treatmentId}`, {
