@@ -173,10 +173,14 @@ function createGeneralAssessment() {
 
     const treatment = JSON.parse(treatmentData);
 
-    console.log("Tratamiento recuperado:", treatment);
-    console.log("treatmentId:", treatment.treatmentId);
 
-    const thisTreatmentId = treatment[0].treatmentId;
+    const thisTreatmentId = Array.isArray(treatment) ? treatment[0]?.treatmentId : treatment?.treatmentId;
+
+    if (!thisTreatmentId) {
+        console.error("No se pudo obtener treatmentId:", treatment);
+        return;
+    }
+
 
     console.log("thisTreatmentId:", thisTreatmentId);
 
