@@ -1,3 +1,5 @@
+const { shallowReadonly } = require("vue");
+
 window.onload = function() {
     const token = sessionStorage.getItem("jwtToken");
     
@@ -235,7 +237,6 @@ function createMuscleAssessments() {
     const treatment = JSON.parse(treatmentData);
     const thisTreatmentId = treatment[0].treatmentId;
 
-    // Seleccionamos todos los bloques de músculos
     const muscleBlocks = document.querySelectorAll('.inputs-container .text-input');
 
     muscleBlocks.forEach(block => {
@@ -284,7 +285,10 @@ function createMuscleAssessments() {
         }
     });
 
-    alert("Tratamiento creado correctamente");
+    Swal.fire({
+        title: "Treatment created successfully",
+        icon: "success"
+    });
 
     window.location.href = "privateZone.html";
 }
@@ -343,7 +347,7 @@ async function storageTreatment() {
     .catch(error => {
         console.error('Error al enviar los datos:', error.message);
     });
-}
+} 
 
 
 
@@ -435,6 +439,14 @@ function updateFormattedDate() {
     } else {
         preview.textContent = "None";
     }
+}
+
+async function createFullTreatment() {
+    createTreatment();
+
+    createGeneralAssessment();
+
+    createMuscleAssessments();
 }
 
 
