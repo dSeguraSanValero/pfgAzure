@@ -253,7 +253,12 @@ function createMuscleAssessments() {
     }
 
     const treatment = JSON.parse(treatmentData);
-    const thisTreatmentId = treatment[0].treatmentId;
+    const thisTreatmentId = treatment.treatmentId;
+
+    if (!thisTreatmentId) {
+        console.error("No se pudo obtener treatmentId:", treatment);
+        return;
+    }
 
     const muscleBlocks = document.querySelectorAll('.inputs-container .text-input');
 
