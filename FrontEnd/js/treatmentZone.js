@@ -312,8 +312,6 @@ function createMuscleAssessments() {
         title: "Treatment created successfully",
         icon: "success"
     });
-
-    window.location.href = "privateZone.html";
 }
 
 
@@ -470,6 +468,8 @@ async function createFullTreatment() {
     await createGeneralAssessment();
 
     await createMuscleAssessments();
+
+    window.location.href = "privateZone.html";
 }
 
 
