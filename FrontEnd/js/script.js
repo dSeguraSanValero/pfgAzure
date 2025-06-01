@@ -59,11 +59,19 @@ async function registerPhysio() {
           document.getElementById('registerPhysioForm').reset();
       } else {
           const errorData = await response.json();
-          alert(`Error en el registro: ${errorData.message || response.statusText}`);
+          Swal.fire({
+              title: "Incorrect email format",
+              text: "please, complete all the fields, or check the email format and try again.",
+              icon: "error"
+          });
       }
   } catch (error) {
       console.error('Error al enviar los datos:', error);
-      alert('Error al registrar el fisioterapeuta. Por favor, intenta de nuevo.');
+        Swal.fire({
+            title: "Incorrect email format",
+            text: "please, complete all the fields, or check the email format and try again.",
+            icon: "error"
+        });
   }
 }
 
