@@ -237,6 +237,8 @@ function createMuscleAssessments() {
 
     const muscleBlocks = document.querySelectorAll('.inputs-container .text-input');
 
+    const fetchPromises = [];
+
     muscleBlocks.forEach(block => {
         const input = block.querySelector('input');
         const label = block.querySelector('label');
@@ -253,7 +255,7 @@ function createMuscleAssessments() {
 
             console.log(`Enviando datos para ${muscleName}:`, muscleData);
 
-            fetch('https://fisioscan-e6f8ehddembuhch9.westeurope-01.azurewebsites.net/MuscularAssessment', {
+            const fetchPromise = fetch('https://fisioscan-e6f8ehddembuhch9.westeurope-01.azurewebsites.net/MuscularAssessment', {
                 method: 'POST',
                 headers: {
                     "Authorization": `Bearer ${token}`,
@@ -280,11 +282,20 @@ function createMuscleAssessments() {
             .catch(error => {
                 console.error(`Error al enviar datos para ${muscleName}:`, error);
             });
+
+            fetchPromises.push(fetchPromise);
         }
     });
 
-    console.log("Success");
+    Promise.all(fetchPromises).then(() => {
+        Swal.fire({
+            title: "Treatment created successfully",
+            icon: "success"
+        });
+        window.location.href = "privateZone.html";
+    });
 }
+
 
 
 
